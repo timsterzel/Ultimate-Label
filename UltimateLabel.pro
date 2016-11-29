@@ -18,3 +18,5 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+# Add Console for debugging purposes
+CONFIG += console
