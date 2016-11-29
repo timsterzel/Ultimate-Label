@@ -40,6 +40,10 @@ void MainWindow::loadCSVFile(QString fileName)
         return;
     }
     QTextStream in(&file);
+
+    //in.setCodec("UTF-8");
+    // Use Latin1 to show german chars
+    in.setCodec("Latin1");
     //QStringList loadedData;
     int row = 0;
     while(!in.atEnd())
