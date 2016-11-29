@@ -21,4 +21,5 @@ MainWindow::~MainWindow()
 void MainWindow::on_action_ffnen_triggered()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Öffnen"));
+
 }
