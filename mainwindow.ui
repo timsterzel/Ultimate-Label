@@ -31,7 +31,7 @@
    </property>
    <widget class="QMenu" name="menuDatei">
     <property name="title">
-     <string>Datei</string>
+     <string>File</string>
     </property>
     <addaction name="action_ffnen"/>
    </widget>
@@ -48,7 +48,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="action_ffnen">
    <property name="text">
-    <string>Öffnen</string>
+    <string>Open</string>
    </property>
   </action>
  </widget>

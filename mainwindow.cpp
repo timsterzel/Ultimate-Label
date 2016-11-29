@@ -22,7 +22,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_action_ffnen_triggered()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Öffnen"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open"));
     qDebug() << "FileName: " << fileName;
     loadCSVFile(fileName);
 }
