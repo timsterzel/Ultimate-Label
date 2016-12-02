@@ -19,6 +19,8 @@ public:
 private slots:
     void on_action_ffnen_triggered();
 
+    void on_actionProfiles_triggered();
+
 private:
     Ui::MainWindow *ui;
 

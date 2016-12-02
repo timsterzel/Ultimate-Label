@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "profilesdialog.h"
 #include <QDebug>
 #include <QFile>
 #include <QFileDialog>
@@ -70,4 +71,11 @@ void MainWindow::loadCSVFile(QString fileName)
     // Show TableWidget with loaded data
     ui->tableWidget_data->show();
 
+}
+
+void MainWindow::on_actionProfiles_triggered()
+{
+    ProfilesDialog dialog;
+    dialog.setModal(true);
+    dialog.exec();
 }

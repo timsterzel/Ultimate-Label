@@ -26,7 +26,7 @@
      <x>0</x>
      <y>0</y>
      <width>528</width>
-     <height>28</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuDatei">
@@ -34,6 +34,7 @@
      <string>File</string>
     </property>
     <addaction name="action_ffnen"/>
+    <addaction name="actionProfiles"/>
    </widget>
    <addaction name="menuDatei"/>
   </widget>
@@ -49,6 +50,11 @@
   <action name="action_ffnen">
    <property name="text">
     <string>Open</string>
+   </property>
+  </action>
+  <action name="actionProfiles">
+   <property name="text">
+    <string>Profiles</string>
    </property>
   </action>
  </widget>
