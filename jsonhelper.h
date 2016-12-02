@@ -6,8 +6,11 @@
 
 class JSONHelper
 {
+private:
+    // Identifier for Json objects
+    static const QString JSON_PROFILES;
 public:
-    static const QString fileName;
+    static const QString PROFILES_FILENAME;
 public:
 
     JSONHelper();

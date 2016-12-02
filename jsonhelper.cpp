@@ -5,7 +5,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
-const QString JSONHelper::fileName = "profiles.json";
+const QString JSONHelper::JSON_PROFILES = "profiles";
+const QString JSONHelper::PROFILES_FILENAME = "profiles.json";
 
 JSONHelper::JSONHelper()
 {
@@ -28,7 +29,7 @@ bool JSONHelper::writeToJson(QString fileName, std::vector<Profile> *profiles)
         profilesArray.append(profileObject);
     }
     QJsonObject root;
-    root.insert("profiles", profilesArray);
+    root.insert(JSON_PROFILES, profilesArray);
     QJsonDocument saveDoc(root);
     file.write(saveDoc.toJson());
     return true;
@@ -46,7 +47,7 @@ bool JSONHelper::readFromJson(QString fileName, std::vector<Profile> *profiles)
     QByteArray data = file.readAll();
     QJsonDocument doc(QJsonDocument::fromJson(data));
     QJsonObject root(doc.object());
-    QJsonArray profilesArray = root.value("profiles").toArray();
+    QJsonArray profilesArray = root.value(JSON_PROFILES).toArray();
     // Load profiles and store them
     for (int i = 0; i < profilesArray.size(); i++)
     {
