@@ -2,6 +2,7 @@
 #define PROFILESDIALOG_H
 #include "profile.h"
 #include <QDialog>
+#include <QListWidgetItem>
 #include <vector>
 
 
@@ -13,13 +14,18 @@ class ProfilesDialog : public QDialog
 {
     Q_OBJECT
 private:
+       Ui::ProfilesDialog *ui;
        std::vector<Profile> m_profiles;
 public:
     explicit ProfilesDialog(QWidget *parent = 0);
     ~ProfilesDialog();
 
+private slots:
+       void on_listWidget_profiles_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
+
 private:
-    Ui::ProfilesDialog *ui;
+    // Set all option widgets to enabled or not enabled
+    void setOptionsEnabled(bool enabled);
 };
 
 #endif // PROFILESDIALOG_H
