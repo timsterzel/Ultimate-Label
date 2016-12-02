@@ -6,6 +6,11 @@
 class Profile
 {
 private:
+    // Identifier for Json file
+    static const QString JSON_NAME;
+    static const QString JSON_SEPERATOR;
+    static const QString JSON_TEMPLATETEXT;
+
     QString m_name;
     QString m_seperator;
     QString m_templateText;
