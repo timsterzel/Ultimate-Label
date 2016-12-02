@@ -23,6 +23,8 @@ public:
 private slots:
        void on_listWidget_profiles_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
 
+       void on_pushButton_delete_clicked();
+
 private:
     // Set all option widgets to enabled or not enabled
     void setOptionsEnabled(bool enabled);

@@ -49,4 +49,6 @@ void ProfilesDialog::on_listWidget_profiles_currentItemChanged(QListWidgetItem *
 void ProfilesDialog::on_pushButton_delete_clicked()
 {
     int selected = ui->listWidget_profiles->currentRow();
+    m_profiles.erase(m_profiles.begin() + selected);
+    ui->listWidget_profiles->takeItem(selected);
 }
