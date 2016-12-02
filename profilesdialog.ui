@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>799</width>
-    <height>443</height>
+    <width>652</width>
+    <height>433</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <enum>QLayout::SetMaximumSize</enum>
      </property>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0">
+      <layout class="QVBoxLayout" name="verticalLayout_list" stretch="0,0">
        <item>
         <widget class="QListWidget" name="listWidget_profiles">
          <property name="maximumSize">
@@ -32,7 +32,7 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <layout class="QHBoxLayout" name="horizontalLayout_buttonsList">
          <item>
           <widget class="QPushButton" name="pushButton_new">
            <property name="text">
@@ -52,7 +52,7 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QVBoxLayout" name="verticalLayout_options">
        <item>
         <widget class="QLabel" name="label_name">
          <property name="text">

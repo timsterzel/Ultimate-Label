@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    profilesdialog.cpp
+    profilesdialog.cpp \
+    jsonhelper.cpp
 
 HEADERS  += mainwindow.h \
-    profilesdialog.h
+    profilesdialog.h \
+    jsonhelper.h
 
 FORMS    += mainwindow.ui \
     profilesdialog.ui
