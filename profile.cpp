@@ -45,15 +45,14 @@ void Profile::setTemplateText(QString templateText)
 
 void Profile::writeToJson(QJsonObject &json) const
 {
-    json["name"] = m_name;
-    json["seperator"] = m_seperator;
-    json["templateText"] = m_templateText;
+    json.insert("name", m_name);
+    json.insert("seperator", m_seperator);
+    json.insert("templateText", m_templateText);
 }
 
 void Profile::readFromJson(QJsonObject &json)
 {
-    m_name = json["name"].toString();
-    m_seperator = json["seperator"].toString();
-    m_templateText = json["templateText"].toString();
-
+    m_name = json.value("name").toString();
+    m_seperator = json.value("seperator").toString();
+    m_templateText = json.value("templateText").toString();
 }
