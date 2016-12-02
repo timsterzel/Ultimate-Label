@@ -43,17 +43,17 @@ void Profile::setTemplateText(QString templateText)
     m_templateText = templateText;
 }
 
-void Profile::writeToJson(QJsonObject &json)
+void Profile::writeToJson(QJsonObject &json) const
 {
-    json[JSON_NAME] = m_name;
-    json[JSON_SEPERATOR] = m_seperator;
-    json[JSON_TEMPLATETEXT] = m_templateText;
+    json["name"] = m_name;
+    json["seperator"] = m_seperator;
+    json["templateText"] = m_templateText;
 }
 
-void Profile::readFromJson(QJsonObject &json) const
+void Profile::readFromJson(QJsonObject &json)
 {
-    m_name = json[JSON_NAME].toString();
-    m_seperator = json[JSON_SEPERATOR].toString();
-    m_templateText = json[JSON_TEMPLATETEXT].toString();
+    m_name = json["name"].toString();
+    m_seperator = json["seperator"].toString();
+    m_templateText = json["templateText"].toString();
 
 }
