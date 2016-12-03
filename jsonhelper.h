@@ -15,7 +15,7 @@ public:
 
     JSONHelper();
 
-    static bool writeToJson(QString fileName, QMap<QString, Profile> *profiles);
+    static bool writeToJson(QString fileName, const QMap<QString, Profile> &profiles);
     static bool readFromJson(QString fileName, QMap<QString, Profile> *profiles);
 };
 

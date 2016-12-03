@@ -14,7 +14,7 @@ JSONHelper::JSONHelper()
 
 }
 
-bool JSONHelper::writeToJson(QString fileName, QMap<QString, Profile> *profiles)
+bool JSONHelper::writeToJson(QString fileName, const QMap<QString, Profile> &profiles)
 {
     QFile file(fileName);
     if (!file.open(QIODevice::WriteOnly))
@@ -24,7 +24,7 @@ bool JSONHelper::writeToJson(QString fileName, QMap<QString, Profile> *profiles)
     }
     QJsonArray profilesArray;
 
-    QMapIterator<QString, Profile> it(*profiles);
+    QMapIterator<QString, Profile> it(profiles);
     while(it.hasNext())
     {
         it.next();

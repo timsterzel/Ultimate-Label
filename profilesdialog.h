@@ -26,11 +26,25 @@ private slots:
 
        void on_pushButton_delete_clicked();
 
+       void on_pushButton_new_clicked();
+
+       void on_lineEdit_name_editingFinished();
+
+       void on_lineEdit_separator_editingFinished();
+
+       void on_plainTextEdit_template_textChanged();
+
+       void on_buttonBox_accepted();
+
 private:
     // Set all option widgets to enabled or not enabled
     void setOptionsEnabled(bool enabled);
     // Clear all fields of options so there are empty
     void clearOptionFields();
+    // Change the overgiven name so that its unique
+    QString findUniqueName(QString name) const;
+
+
 };
 
 #endif // PROFILESDIALOG_H

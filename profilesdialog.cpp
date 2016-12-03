@@ -1,6 +1,7 @@
 #include "profilesdialog.h"
 #include "ui_profilesdialog.h"
 #include "jsonhelper.h"
+#include <QDebug>
 
 ProfilesDialog::ProfilesDialog(QWidget *parent) :
     QDialog(parent),
@@ -47,6 +48,18 @@ void ProfilesDialog::clearOptionFields()
     ui->plainTextEdit_template->setPlainText("");
 }
 
+QString ProfilesDialog::findUniqueName(QString name) const
+{
+    QString nameNew = name;
+    int cnt = 1;
+    while(m_profiles.contains(nameNew))
+    {
+        nameNew = name + "(" + QString::number(cnt) + ")";
+        cnt++;
+    }
+    return nameNew;
+}
+
 void ProfilesDialog::on_listWidget_profiles_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous)
 {
     setOptionsEnabled(m_profiles.size() > 0);
@@ -79,4 +92,53 @@ void ProfilesDialog::on_pushButton_delete_clicked()
         // Remove from list
         ui->listWidget_profiles->takeItem(selected);
     }
+}
+
+void ProfilesDialog::on_pushButton_new_clicked()
+{
+    QString defaultName = findUniqueName("New Profile");
+    m_profiles.insert(defaultName, { defaultName, "", "" });
+    ui->listWidget_profiles->addItem(defaultName);
+    // Select new created item
+    ui->listWidget_profiles->setCurrentRow(m_profiles.size() - 1);
+}
+
+void ProfilesDialog::on_lineEdit_name_editingFinished()
+{
+    QString key = ui->listWidget_profiles->currentItem()->text();
+    Profile profile = m_profiles.value(key);
+    QString nameNew = ui->lineEdit_name->text();
+    // Onlx find unique name variant, when the name has changed
+    if (nameNew != key)
+    {
+        nameNew = findUniqueName(nameNew);
+    }
+    profile.setName(nameNew);
+    ui->listWidget_profiles->currentItem()->setText(nameNew);
+    ui->lineEdit_name->setText(nameNew);
+
+    // Remove old key value pair and insert it with the new data (because key has changed)
+    m_profiles.remove(key);
+    m_profiles.insert(nameNew, profile);
+}
+
+void ProfilesDialog::on_lineEdit_separator_editingFinished()
+{
+    QString key = ui->listWidget_profiles->currentItem()->text();
+    Profile &profile = m_profiles[key];
+    profile.setSeperator(ui->lineEdit_separator->text());
+}
+
+// Instead of the editingFinished this method is called after every change in the widget. So dont do to heavy stuff here
+// and implement an other solution instead
+void ProfilesDialog::on_plainTextEdit_template_textChanged()
+{
+    QString key = ui->listWidget_profiles->currentItem()->text();
+    Profile &profile = m_profiles[key];
+    profile.setTemplateText(ui->plainTextEdit_template->toPlainText());
+}
+
+void ProfilesDialog::on_buttonBox_accepted()
+{
+    JSONHelper::writeToJson(JSONHelper::PROFILES_FILENAME, m_profiles);
 }
