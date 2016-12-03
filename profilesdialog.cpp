@@ -40,9 +40,30 @@ void ProfilesDialog::setOptionsEnabled(bool enabled)
     }
 }
 
+void ProfilesDialog::clearOptionFields()
+{
+    ui->lineEdit_name->setText("");
+    ui->lineEdit_separator->setText("");
+    ui->plainTextEdit_template->setPlainText("");
+}
+
 void ProfilesDialog::on_listWidget_profiles_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous)
 {
     setOptionsEnabled(m_profiles.size() > 0);
+    // Show data of selected profile is there is one selected
+    if (m_profiles.size() > 0)
+    {
+        QString key = current->text();
+        const Profile &profile = m_profiles.value(key);
+        ui->lineEdit_name->setText(profile.getName());
+        ui->lineEdit_separator->setText(profile.getSeperator());
+        ui->plainTextEdit_template->setPlainText(profile.getTemplateText());
+    }
+    else
+    {
+        // Nothing to show in option fields
+        clearOptionFields();
+    }
 }
 
 // Delete selected

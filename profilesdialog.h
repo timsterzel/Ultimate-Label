@@ -29,6 +29,8 @@ private slots:
 private:
     // Set all option widgets to enabled or not enabled
     void setOptionsEnabled(bool enabled);
+    // Clear all fields of options so there are empty
+    void clearOptionFields();
 };
 
 #endif // PROFILESDIALOG_H
