@@ -45,7 +45,7 @@ void ProfilesDialog::clearOptionFields()
 {
     ui->lineEdit_name->setText("");
     ui->lineEdit_separator->setText("");
-    ui->plainTextEdit_template->setPlainText("");
+    ui->plainTextEdit_template->clear();
 }
 
 QString ProfilesDialog::findUniqueName(QString name) const
@@ -62,9 +62,8 @@ QString ProfilesDialog::findUniqueName(QString name) const
 
 void ProfilesDialog::on_listWidget_profiles_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous)
 {
-    setOptionsEnabled(m_profiles.size() > 0);
     // Show data of selected profile is there is one selected
-    if (m_profiles.size() > 0)
+    if (current)
     {
         QString key = current->text();
         const Profile &profile = m_profiles.value(key);
@@ -77,6 +76,7 @@ void ProfilesDialog::on_listWidget_profiles_currentItemChanged(QListWidgetItem *
         // Nothing to show in option fields
         clearOptionFields();
     }
+    setOptionsEnabled(current != nullptr);
 }
 
 // Delete selected
@@ -105,6 +105,11 @@ void ProfilesDialog::on_pushButton_new_clicked()
 
 void ProfilesDialog::on_lineEdit_name_editingFinished()
 {
+    // if nothing is selected, there is nothing to do
+    if (ui->listWidget_profiles->selectedItems().count() < 1)
+    {
+        return;
+    }
     QString key = ui->listWidget_profiles->currentItem()->text();
     Profile profile = m_profiles.value(key);
     QString nameNew = ui->lineEdit_name->text();
@@ -124,6 +129,11 @@ void ProfilesDialog::on_lineEdit_name_editingFinished()
 
 void ProfilesDialog::on_lineEdit_separator_editingFinished()
 {
+    // if nothing is selected, there is nothing to do
+    if (ui->listWidget_profiles->selectedItems().count() < 1)
+    {
+        return;
+    }
     QString key = ui->listWidget_profiles->currentItem()->text();
     Profile &profile = m_profiles[key];
     profile.setSeperator(ui->lineEdit_separator->text());
@@ -133,6 +143,11 @@ void ProfilesDialog::on_lineEdit_separator_editingFinished()
 // and implement an other solution instead
 void ProfilesDialog::on_plainTextEdit_template_textChanged()
 {
+    // if nothing is selected, there is nothing to do
+    if (m_profiles.size() < 1)
+    {
+        return;
+    }
     QString key = ui->listWidget_profiles->currentItem()->text();
     Profile &profile = m_profiles[key];
     profile.setTemplateText(ui->plainTextEdit_template->toPlainText());
