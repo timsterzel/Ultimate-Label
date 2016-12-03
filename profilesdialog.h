@@ -3,7 +3,8 @@
 #include "profile.h"
 #include <QDialog>
 #include <QListWidgetItem>
-#include <vector>
+#include <QMap>
+#include <QString>
 
 
 namespace Ui {
@@ -15,7 +16,7 @@ class ProfilesDialog : public QDialog
     Q_OBJECT
 private:
        Ui::ProfilesDialog *ui;
-       std::vector<Profile> m_profiles;
+       QMap<QString,Profile> m_profiles;
 public:
     explicit ProfilesDialog(QWidget *parent = 0);
     ~ProfilesDialog();

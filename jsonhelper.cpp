@@ -4,6 +4,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QMapIterator>
 
 const QString JSONHelper::JSON_PROFILES = "profiles";
 const QString JSONHelper::PROFILES_FILENAME = "profiles.json";
@@ -13,7 +14,7 @@ JSONHelper::JSONHelper()
 
 }
 
-bool JSONHelper::writeToJson(QString fileName, std::vector<Profile> *profiles)
+bool JSONHelper::writeToJson(QString fileName, QMap<QString, Profile> *profiles)
 {
     QFile file(fileName);
     if (!file.open(QIODevice::WriteOnly))
@@ -22,12 +23,25 @@ bool JSONHelper::writeToJson(QString fileName, std::vector<Profile> *profiles)
         return false;
     }
     QJsonArray profilesArray;
+
+    QMapIterator<QString, Profile> it(*profiles);
+    while(it.hasNext())
+    {
+        it.next();
+        Profile profile = it.value();
+        QJsonObject profileObject;
+        profile.writeToJson(profileObject);
+        profilesArray.append(profileObject);
+    }
+
+    /*
     for (Profile& profile : *profiles)
     {
         QJsonObject profileObject;
         profile.writeToJson(profileObject);
         profilesArray.append(profileObject);
     }
+    */
     QJsonObject root;
     root.insert(JSON_PROFILES, profilesArray);
     QJsonDocument saveDoc(root);
@@ -35,7 +49,7 @@ bool JSONHelper::writeToJson(QString fileName, std::vector<Profile> *profiles)
     return true;
 }
 
-bool JSONHelper::readFromJson(QString fileName, std::vector<Profile> *profiles)
+bool JSONHelper::readFromJson(QString fileName, QMap<QString, Profile> *profiles)
 {
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly))
@@ -54,9 +68,7 @@ bool JSONHelper::readFromJson(QString fileName, std::vector<Profile> *profiles)
         QJsonObject profileObject = profilesArray.at(i).toObject();
         Profile profile;
         profile.readFromJson(profileObject);
-        profiles->push_back(profile);
+        profiles->insert(profile.getName(), profile);
     }
     return true;
-
-
 }

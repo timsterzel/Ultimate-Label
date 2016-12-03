@@ -2,7 +2,7 @@
 #define JSONHELPER_H
 #include "profile.h"
 #include <QString>
-#include <vector>
+#include <QMap>
 
 class JSONHelper
 {
@@ -15,8 +15,8 @@ public:
 
     JSONHelper();
 
-    static bool writeToJson(QString fileName, std::vector<Profile> *profiles);
-    static bool readFromJson(QString fileName, std::vector<Profile> *profiles);
+    static bool writeToJson(QString fileName, QMap<QString, Profile> *profiles);
+    static bool readFromJson(QString fileName, QMap<QString, Profile> *profiles);
 };
 
 #endif // JSONHELPER_H

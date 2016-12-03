@@ -51,8 +51,11 @@ void ProfilesDialog::on_pushButton_delete_clicked()
     // Only delete if there is something selected
     if (ui->listWidget_profiles->selectedItems().count() > 0)
     {
+        QString key = ui->listWidget_profiles->currentItem()->text();
+        // Remove from container
+        m_profiles.remove(key);
         int selected = ui->listWidget_profiles->currentRow();
-        m_profiles.erase(m_profiles.begin() + selected);
+        // Remove from list
         ui->listWidget_profiles->takeItem(selected);
     }
 }
