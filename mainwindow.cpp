@@ -33,6 +33,7 @@ void MainWindow::on_action_ffnen_triggered()
 
 void MainWindow::loadProfiles()
 {
+    ui->comboBox_profiles->clear();
     JSONHelper::readFromJson(JSONHelper::PROFILES_FILENAME, &m_profiles);
     for (const Profile &profile : m_profiles)
     {
@@ -91,4 +92,6 @@ void MainWindow::on_actionProfiles_triggered()
     ProfilesDialog dialog;
     dialog.setModal(true);
     dialog.exec();
+    // Reload profiles, because data has perhaps changed
+    loadProfiles();
 }
