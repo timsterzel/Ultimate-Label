@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "jsonhelper.h"
 #include "profilesdialog.h"
 #include <QDebug>
 #include <QFile>
@@ -14,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableWidget_data->setRowCount(3);
     ui->tableWidget_data->horizontalHeader()->setStretchLastSection(true);
     ui->tableWidget_data->hide();
+    ui->comboBox_profiles->hide();
+    loadProfiles();
 }
 
 MainWindow::~MainWindow()
@@ -26,6 +29,15 @@ void MainWindow::on_action_ffnen_triggered()
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open"));
     qDebug() << "FileName: " << fileName;
     loadCSVFile(fileName);
+}
+
+void MainWindow::loadProfiles()
+{
+    JSONHelper::readFromJson(JSONHelper::PROFILES_FILENAME, &m_profiles);
+    for (const Profile &profile : m_profiles)
+    {
+        ui->comboBox_profiles->addItem(profile.getName());
+    }
 }
 
 void MainWindow::loadCSVFile(QString fileName)
@@ -70,6 +82,7 @@ void MainWindow::loadCSVFile(QString fileName)
     }
     // Show TableWidget with loaded data
     ui->tableWidget_data->show();
+    ui->comboBox_profiles->show();
 
 }
 

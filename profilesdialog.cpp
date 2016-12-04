@@ -13,7 +13,7 @@ ProfilesDialog::ProfilesDialog(QWidget *parent) :
 
     // Load profiles
     JSONHelper::readFromJson(JSONHelper::PROFILES_FILENAME, &m_profiles);
-    for (Profile profile : m_profiles)
+    for (const Profile &profile : m_profiles)
     {
         ui->listWidget_profiles->addItem(profile.getName());
     }

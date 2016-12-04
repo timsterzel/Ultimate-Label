@@ -1,8 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "profile.h"
 #include <QMainWindow>
+#include <QMap>
 #include <QString>
+
 
 namespace Ui {
 class MainWindow;
@@ -11,6 +13,8 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+private:
+    QMap<QString,Profile> m_profiles;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -24,6 +28,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
+    void loadProfiles();
     void loadCSVFile(QString fileName);
 };
 
