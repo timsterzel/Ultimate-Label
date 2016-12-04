@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QFileDialog>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,8 +15,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableWidget_data->setColumnCount(6);
     ui->tableWidget_data->setRowCount(3);
     ui->tableWidget_data->horizontalHeader()->setStretchLastSection(true);
+    // Select only one row and when the whole one
+    ui->tableWidget_data->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget_data->setSelectionMode(QAbstractItemView::SingleSelection);
+
     ui->tableWidget_data->hide();
     ui->comboBox_profiles->hide();
+    ui->pushButton_print->hide();
     loadProfiles();
 }
 
@@ -27,13 +33,13 @@ MainWindow::~MainWindow()
 void MainWindow::on_action_ffnen_triggered()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open"));
-    qDebug() << "FileName: " << fileName;
     loadCSVFile(fileName);
 }
 
 void MainWindow::loadProfiles()
 {
     ui->comboBox_profiles->clear();
+    m_profiles.clear();
     JSONHelper::readFromJson(JSONHelper::PROFILES_FILENAME, &m_profiles);
     for (const Profile &profile : m_profiles)
     {
@@ -84,7 +90,7 @@ void MainWindow::loadCSVFile(QString fileName)
     // Show TableWidget with loaded data
     ui->tableWidget_data->show();
     ui->comboBox_profiles->show();
-
+    ui->pushButton_print->show();
 }
 
 void MainWindow::on_actionProfiles_triggered()
@@ -94,4 +100,21 @@ void MainWindow::on_actionProfiles_triggered()
     dialog.exec();
     // Reload profiles, because data has perhaps changed
     loadProfiles();
+}
+
+void MainWindow::on_pushButton_print_clicked()
+{
+    // Only print when there is a row selected and a profile is selected
+    if (ui->tableWidget_data->selectedItems().size() < 1)
+    {
+        QMessageBox::information(this, "Nope", "Please select a row to print");
+        return;
+    }
+    if (ui->comboBox_profiles->count() < 1)
+    {
+        QMessageBox::information(this, "Nope", "Please select a profile for printing");
+        return;
+    }
+    QString key = ui->comboBox_profiles->currentText();
+    QMessageBox::information(this, "Key", key);
 }

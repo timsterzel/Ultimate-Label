@@ -25,6 +25,8 @@ private slots:
 
     void on_actionProfiles_triggered();
 
+    void on_pushButton_print_clicked();
+
 private:
     Ui::MainWindow *ui;
 
