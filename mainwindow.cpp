@@ -91,6 +91,8 @@ void MainWindow::loadCSVFile(QString fileName)
     ui->tableWidget_data->show();
     ui->comboBox_profiles->show();
     ui->pushButton_print->show();
+    // Call slot when the horizontal header was clicked
+    connect(ui->tableWidget_data->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(on_tableHorizontalHeaderClicked(int)));
 }
 
 void MainWindow::on_actionProfiles_triggered()
@@ -117,4 +119,11 @@ void MainWindow::on_pushButton_print_clicked()
     }
     QString key = ui->comboBox_profiles->currentText();
     QMessageBox::information(this, "Key", key);
+}
+
+void MainWindow::on_tableHorizontalHeaderClicked(int index)
+{
+    qDebug() << "tableColumnHeaderClicked i: " << index << "\n";
+    // Sort data
+    ui->tableWidget_data->sortItems(index, Qt::AscendingOrder);
 }

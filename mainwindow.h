@@ -27,6 +27,9 @@ private slots:
 
     void on_pushButton_print_clicked();
 
+    // Own Slot, called when a item of the horizontal header was clicked
+    void on_tableHorizontalHeaderClicked(int index);
+
 private:
     Ui::MainWindow *ui;
 
