@@ -62,6 +62,7 @@
     </property>
     <addaction name="action_ffnen"/>
     <addaction name="actionProfiles"/>
+    <addaction name="actionClear"/>
    </widget>
    <addaction name="menuDatei"/>
   </widget>
@@ -74,6 +75,11 @@
   <action name="actionProfiles">
    <property name="text">
     <string>Profiles</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>Clear</string>
    </property>
   </action>
  </widget>

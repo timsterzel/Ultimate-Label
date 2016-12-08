@@ -87,7 +87,7 @@ void MainWindow::loadCSVFile(QString fileName)
         }
         row++;
     }
-    // Show TableWidget with loaded data
+    // Show needed widget with loaded data
     ui->tableWidget_data->show();
     ui->comboBox_profiles->show();
     ui->pushButton_print->show();
@@ -102,6 +102,18 @@ void MainWindow::on_actionProfiles_triggered()
     dialog.exec();
     // Reload profiles, because data has perhaps changed
     loadProfiles();
+}
+
+void MainWindow::on_actionClear_triggered()
+{
+    ui->tableWidget_data->clear();
+    ui->tableWidget_data->setRowCount(0);
+    ui->tableWidget_data->setColumnCount(0);
+
+    // Hide widgets which are not needed without loaded data
+    ui->tableWidget_data->hide();
+    ui->comboBox_profiles->hide();
+    ui->pushButton_print->hide();
 }
 
 void MainWindow::on_pushButton_print_clicked()
@@ -123,7 +135,9 @@ void MainWindow::on_pushButton_print_clicked()
 
 void MainWindow::on_tableHorizontalHeaderClicked(int index)
 {
-    qDebug() << "tableColumnHeaderClicked i: " << index << "\n";
+    //qDebug() << "tableColumnHeaderClicked i: " << index << "\n";
     // Sort data
     ui->tableWidget_data->sortItems(index, Qt::AscendingOrder);
 }
+
+
