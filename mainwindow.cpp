@@ -12,8 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->tableWidget_data->setColumnCount(6);
-    ui->tableWidget_data->setRowCount(3);
+    //ui->tableWidget_data->setRowCount(0);
+    //ui->tableWidget_data->setColumnCount(0);
     ui->tableWidget_data->horizontalHeader()->setStretchLastSection(true);
     // Select only one row and when the whole one
     ui->tableWidget_data->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -49,10 +49,6 @@ void MainWindow::loadProfiles()
 
 void MainWindow::loadCSVFile(QString fileName)
 {
-    ui->tableWidget_data->clear();
-    ui->tableWidget_data->setRowCount(0);
-    ui->tableWidget_data->setColumnCount(0);
-
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly))
     {
@@ -76,8 +72,8 @@ void MainWindow::loadCSVFile(QString fileName)
         int column = 0;
         for (QString s : loadedData)
         {
-            // If row is 0 we are in the first round of the loop, so we have to add the columns
-            if (row == 0)
+            // Add the columns when there are not already created
+            if (ui->tableWidget_data->columnCount() < loadedData.size())
             {
                 ui->tableWidget_data->insertColumn(column);
             }
