@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QWebEngineView>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -126,7 +127,12 @@ void MainWindow::on_pushButton_print_clicked()
         return;
     }
     QString key = ui->comboBox_profiles->currentText();
-    QMessageBox::information(this, "Key", key);
+    //QMessageBox::information(this, "Key", key);
+
+    QWebEngineView *view = new QWebEngineView(ui->centralWidget);
+    view->load(QUrl("http://qt-project.org/"));
+    view->show();
+
 }
 
 void MainWindow::on_tableHorizontalHeaderClicked(int index)
