@@ -1,12 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "jsonhelper.h"
+#include "printshowdialog.h"
 #include "profilesdialog.h"
 #include <QDebug>
 #include <QFile>
 #include <QFileDialog>
 #include <QMessageBox>
-#include <QWebEngineView>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -127,12 +127,19 @@ void MainWindow::on_pushButton_print_clicked()
         return;
     }
     QString key = ui->comboBox_profiles->currentText();
-    //QMessageBox::information(this, "Key", key);
 
-    QWebEngineView *view = new QWebEngineView(ui->centralWidget);
-    view->load(QUrl("http://qt-project.org/"));
-    view->show();
-
+    QString tempText = m_profiles[key].getTemplateText();
+    // Replace placeholders which column data
+    for (int i = 0; i < ui->tableWidget_data->columnCount(); i++)
+    {
+        QString data = ui->tableWidget_data->selectedItems().at(i)->text();
+        // Placeholder has the form $(column)
+        tempText.replace("$(" + QString::number(i + 1) + ")", data);
+    }
+    // Show dialog which show the data for printing
+    PrintShowDialog dialog(nullptr, tempText);
+    dialog.setModal(true);
+    dialog.exec();
 }
 
 void MainWindow::on_tableHorizontalHeaderClicked(int index)

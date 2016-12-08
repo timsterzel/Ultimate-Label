@@ -5,7 +5,6 @@
 #-------------------------------------------------
 
 QT       += core gui
-QT       += webenginewidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,14 +16,17 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     profilesdialog.cpp \
     jsonhelper.cpp \
-    profile.cpp
+    profile.cpp \
+    printshowdialog.cpp
 
 HEADERS  += mainwindow.h \
     profilesdialog.h \
     jsonhelper.h \
-    profile.h
+    profile.h \
+    printshowdialog.h
 
 FORMS    += mainwindow.ui \
-    profilesdialog.ui
+    profilesdialog.ui \
+    printshowdialog.ui
 # Add Console for debugging purposes
 CONFIG += console
