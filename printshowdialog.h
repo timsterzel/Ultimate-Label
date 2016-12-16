@@ -15,6 +15,9 @@ public:
     PrintShowDialog(QWidget *parent = 0, QString dataToShow = "");
     ~PrintShowDialog();
 
+private slots:
+    void on_pushButton_print_clicked();
+
 private:
     Ui::PrintShowDialog *ui;
 };

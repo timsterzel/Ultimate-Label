@@ -18,6 +18,13 @@
     <widget class="QTextEdit" name="textEditHtml"/>
    </item>
    <item>
+    <widget class="QPushButton" name="pushButton_print">
+     <property name="text">
+      <string>Print</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
