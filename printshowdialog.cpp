@@ -1,5 +1,6 @@
 #include "printshowdialog.h"
 #include "ui_printshowdialog.h"
+#include <QDebug>
 #include <QPainter>
 #include <QPrinter>
 #include <QPrintDialog>
@@ -27,6 +28,7 @@ void PrintShowDialog::on_pushButton_print_clicked()
     dialog.addEnabledOption(QAbstractPrintDialog::PrintSelection);
     if (dialog.exec() != QDialog::Accepted)
     {
+        qDebug() << "Error by opening Printer dialog\n";
         return;
     }
     //printer.setPaperSize(QSizeF(6200, 29), QPrinter::Millimeter);
