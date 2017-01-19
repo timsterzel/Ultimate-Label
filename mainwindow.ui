@@ -61,10 +61,17 @@
      <string>File</string>
     </property>
     <addaction name="action_ffnen"/>
-    <addaction name="actionProfiles"/>
     <addaction name="actionClear"/>
    </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionProfiles"/>
+    <addaction name="actionSettings"/>
+   </widget>
    <addaction name="menuDatei"/>
+   <addaction name="menuEdit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="action_ffnen">
@@ -80,6 +87,11 @@
   <action name="actionClear">
    <property name="text">
     <string>Clear</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
    </property>
   </action>
  </widget>

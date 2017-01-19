@@ -150,3 +150,8 @@ void MainWindow::on_tableHorizontalHeaderClicked(int index)
 }
 
 
+
+void MainWindow::on_actionSettings_triggered()
+{
+
+}

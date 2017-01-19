@@ -34,6 +34,8 @@ private slots:
 
 
 
+    void on_actionSettings_triggered();
+
 private:
     Ui::MainWindow *ui;
 
