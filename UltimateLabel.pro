@@ -26,7 +26,8 @@ HEADERS  += mainwindow.h \
     jsonhelper.h \
     profile.h \
     printshowdialog.h \
-    settingsdialog.h
+    settingsdialog.h \
+    settings.h
 
 FORMS    += mainwindow.ui \
     profilesdialog.ui \

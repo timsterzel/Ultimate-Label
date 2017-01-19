@@ -3,6 +3,7 @@
 #include "jsonhelper.h"
 #include "printshowdialog.h"
 #include "profilesdialog.h"
+#include "settingsdialog.h"
 #include <QDebug>
 #include <QFile>
 #include <QFileDialog>
@@ -153,5 +154,7 @@ void MainWindow::on_tableHorizontalHeaderClicked(int index)
 
 void MainWindow::on_actionSettings_triggered()
 {
-
+    SettingsDialog dialog;
+    dialog.setModal(true);
+    dialog.exec();
 }

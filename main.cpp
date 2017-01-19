@@ -13,11 +13,7 @@ int main(int argc, char *argv[])
     QTranslator translator;
     // load language file from resource
     translator.load(":/ultimatelabel_lang_" + QLocale::system().name());
-    a.installTranslator(&translator);
-    /*
-    QSettings settings("test.ini", QSettings::IniFormat);
-    settings.setValue("Test", 3);
-    */
+    a.installTranslator(&translator);    
 
     MainWindow w;
     w.show();
