@@ -31,17 +31,33 @@ void PrintShowDialog::on_pushButton_print_clicked()
         qDebug() << "Error by opening Printer dialog\n";
         return;
     }
-    //printer.setPaperSize(QSizeF(6200, 29), QPrinter::Millimeter);
-    // Start printing
+    //printer.setPaperSize(QSizeF(62, 29), QPrinter::Millimeter);
+    QTextDocument *doc = ui->textEditHtml->document();
+    // Scale painter so the documents content fits perfect
+    double scaleX = printer.pageRect().width() / (double) (doc->size().width());
+    double scaleY = printer.pageRect().height() / (double) (doc->size().height());
+    double scale = qMin(scaleX, scaleY);
     QPainter painter;
     painter.begin(&printer);
-    //double scaleX = printer.pageRect().width() / (double) (ui->textEditHtml->width());
-    //double scaleY = printer.pageRect().height() / (double) (ui->textEditHtml->height());
-    //double scale = qMin(scaleX, scaleY);
-    //painter.translate(printer.paperRect().x() + printer.pageRect().width()/2,
-                      //printer.paperRect().y() + printer.pageRect().height()/2);
-    //painter.scale(scale, scale);
-    //painter.translate(-width() / 2, -height() / 2);
+    painter.scale(scale, scale);
+    // Print
+    doc->drawContents(&painter);
 
+
+    //ui->textEditHtml->print(&printer);
+
+    /*
+    QPrinter printer2(QPrinter::HighResolution);
+    printer2.setPaperSize(QSizeF(62, 29), QPrinter::Millimeter);
+    printer2.fullPage();
+    printer2.setOutputFormat(QPrinter::PdfFormat);
+    printer2.setOutputFileName("output.pdf");
+    */
+
+    /*
+    QPainter painter;
+    painter.begin(&printer);
     ui->textEditHtml->render(&painter);
+    */
+
 }
