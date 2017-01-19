@@ -9,8 +9,8 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 {
     ui->setupUi(this);    
 
-    QString profilesStartPath = m_settings.value(Settings::SETTINGS_PROFILES_START_PATH, "").toString();
-    ui->lineEdit_startPathProfiles->setText(profilesStartPath);
+    QString profilesStartPath = m_settings.value(Settings::SETTINGS_FILE_START_PATH, "").toString();
+    ui->lineEdit_startPath->setText(profilesStartPath);
 }
 
 SettingsDialog::~SettingsDialog()
@@ -20,5 +20,5 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::on_buttonBox_accepted()
 {
-    m_settings.setValue(Settings::SETTINGS_PROFILES_START_PATH, ui->lineEdit_startPathProfiles->text());
+    m_settings.setValue(Settings::SETTINGS_FILE_START_PATH, ui->lineEdit_startPath->text());
 }
