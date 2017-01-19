@@ -4,6 +4,7 @@
 #include "printshowdialog.h"
 #include "profilesdialog.h"
 #include "settingsdialog.h"
+#include "settings.h"
 #include <QDebug>
 #include <QFile>
 #include <QFileDialog>
@@ -11,6 +12,7 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
+    m_settings(Settings::SETTINGS_FILENAME, QSettings::IniFormat),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -32,9 +34,21 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_action_ffnen_triggered()
+void MainWindow::on_action_open_triggered()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open"));
+    // load start path
+    QString startPath = m_settings.value(Settings::SETTINGS_FILE_START_PATH, "").toString();
+    QString fileName = "";
+    // When startpath was set in options, open dialog with this start path
+    if (startPath != "")
+    {
+        fileName = QFileDialog::getOpenFileName(this, tr("Open"), startPath);
+    }
+    // Else use default path
+    else
+    {
+        fileName = QFileDialog::getOpenFileName(this, tr("Open"));
+    }
     loadCSVFile(fileName);
 }
 
@@ -158,3 +172,5 @@ void MainWindow::on_actionSettings_triggered()
     dialog.setModal(true);
     dialog.exec();
 }
+
+

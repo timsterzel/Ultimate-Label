@@ -60,7 +60,7 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="action_ffnen"/>
+    <addaction name="action_open"/>
     <addaction name="actionClear"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
@@ -74,7 +74,7 @@
    <addaction name="menuEdit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="action_ffnen">
+  <action name="action_open">
    <property name="text">
     <string>Open</string>
    </property>

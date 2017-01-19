@@ -3,6 +3,7 @@
 #include "profile.h"
 #include <QMainWindow>
 #include <QMap>
+#include <QSettings>
 #include <QString>
 
 
@@ -14,6 +15,7 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 private:
+    QSettings m_settings;
     QMap<QString,Profile> m_profiles;
 
 public:
@@ -21,7 +23,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_action_ffnen_triggered();
+    void on_action_open_triggered();
 
     void on_actionProfiles_triggered();
 
@@ -31,8 +33,6 @@ private slots:
 
     // Own Slot, called when a item of the horizontal header was clicked
     void on_tableHorizontalHeaderClicked(int index);
-
-
 
     void on_actionSettings_triggered();
 
