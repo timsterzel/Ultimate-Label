@@ -3,9 +3,9 @@
 #include "jsonhelper.h"
 #include <QDebug>
 
-ProfilesDialog::ProfilesDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::ProfilesDialog)
+ProfilesDialog::ProfilesDialog(QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::ProfilesDialog)
 {
     ui->setupUi(this);
 
@@ -20,11 +20,8 @@ ProfilesDialog::ProfilesDialog(QWidget *parent) :
     // Select first row
     if (m_profiles.size() > 0)
     {
-        ui->listWidget_profiles->setCurrentRow(0);
-        //setOptionsEnabled(true);
+        ui->listWidget_profiles->setCurrentRow(0);        
     }
-    //ui->listWidget_profiles
-    // listWidget_profiles
 }
 
 ProfilesDialog::~ProfilesDialog()
@@ -34,7 +31,7 @@ ProfilesDialog::~ProfilesDialog()
 
 void ProfilesDialog::setOptionsEnabled(bool enabled)
 {
-    for (int i = 0; i < ui->verticalLayout_options->count(); i++)
+    for (int i{ 0 }; i < ui->verticalLayout_options->count(); i++)
     {
         QWidget *widget{ ui->verticalLayout_options->itemAt(i)->widget() };
         widget->setEnabled(enabled);

@@ -16,7 +16,7 @@ JSONHelper::JSONHelper()
 
 bool JSONHelper::writeToJson(QString fileName, const QMap<QString, Profile> &profiles)
 {
-    QFile file(fileName);
+    QFile file{ fileName };
     if (!file.open(QIODevice::WriteOnly))
     {
         qWarning() << "Error by opening Json file \n";
@@ -28,20 +28,12 @@ bool JSONHelper::writeToJson(QString fileName, const QMap<QString, Profile> &pro
     while(it.hasNext())
     {
         it.next();
-        Profile profile = it.value();
+        Profile profile{ it.value() };
         QJsonObject profileObject;
         profile.writeToJson(profileObject);
         profilesArray.append(profileObject);
     }
 
-    /*
-    for (Profile& profile : *profiles)
-    {
-        QJsonObject profileObject;
-        profile.writeToJson(profileObject);
-        profilesArray.append(profileObject);
-    }
-    */
     QJsonObject root;
     root.insert(JSON_PROFILES, profilesArray);
     QJsonDocument saveDoc(root);
@@ -51,24 +43,25 @@ bool JSONHelper::writeToJson(QString fileName, const QMap<QString, Profile> &pro
 
 bool JSONHelper::readFromJson(QString fileName, QMap<QString, Profile> *profiles)
 {
-    QFile file(fileName);
+    QFile file{ fileName };
     if (!file.open(QIODevice::ReadOnly))
     {
         qWarning() << "Error by opening Json file \n";
         return false;
     }
 
-    QByteArray data = file.readAll();
+    QByteArray data{ file.readAll() };
     QJsonDocument doc(QJsonDocument::fromJson(data));
     QJsonObject root(doc.object());
-    QJsonArray profilesArray = root.value(JSON_PROFILES).toArray();
+    QJsonArray profilesArray(root.value(JSON_PROFILES).toArray());
     // Load profiles and store them
-    for (int i = 0; i < profilesArray.size(); i++)
+    for (int i{ 0 }; i < profilesArray.size(); i++)
     {
-        QJsonObject profileObject = profilesArray.at(i).toObject();
+        QJsonObject profileObject{ profilesArray.at(i).toObject() };
         Profile profile;
         profile.readFromJson(profileObject);
         profiles->insert(profile.getName(), profile);
+        qDebug() << "Inserted \n";
     }
     return true;
 }

@@ -5,9 +5,9 @@
 #include <QPrinter>
 #include <QPrintDialog>
 
-PrintShowDialog::PrintShowDialog(QWidget *parent, QString dataToShow) :
-    QDialog(parent),
-    ui(new Ui::PrintShowDialog)
+PrintShowDialog::PrintShowDialog(QWidget *parent, QString dataToShow)
+    : QDialog(parent)
+    , ui(new Ui::PrintShowDialog)
 {
     ui->setupUi(this);
 
@@ -23,7 +23,7 @@ void PrintShowDialog::on_pushButton_print_clicked()
 {
     // Let user select printer and set options
     QPrinter printer;
-    QPrintDialog dialog(&printer, this);
+    QPrintDialog dialog{ &printer, this };
     dialog.setWindowTitle("Print Document");
     dialog.addEnabledOption(QAbstractPrintDialog::PrintSelection);
     if (dialog.exec() != QDialog::Accepted)
@@ -31,12 +31,12 @@ void PrintShowDialog::on_pushButton_print_clicked()
         qDebug() << "Error by opening Printer dialog\n";
         return;
     }
-    //printer.setPaperSize(QSizeF(62, 29), QPrinter::Millimeter);
-    QTextDocument *doc = ui->textEditHtml->document();
+    printer.setPaperSize(QSizeF(62, 29), QPrinter::Millimeter);
+    QTextDocument *doc{ ui->textEditHtml->document() };
     // Scale painter so the documents content fits perfect
-    double scaleX = printer.pageRect().width() / (double) (doc->size().width());
-    double scaleY = printer.pageRect().height() / (double) (doc->size().height());
-    double scale = qMin(scaleX, scaleY);
+    double scaleX{ printer.pageRect().width() / (double) (doc->size().width()) };
+    double scaleY{ printer.pageRect().height() / (double) (doc->size().height()) };
+    double scale{ qMin(scaleX, scaleY) };
     QPainter painter;
     painter.begin(&printer);
     painter.scale(scale, scale);

@@ -10,10 +10,10 @@
 #include <QFileDialog>
 #include <QMessageBox>
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    m_settings(Settings::SETTINGS_FILENAME, QSettings::IniFormat),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , m_settings{ Settings::SETTINGS_FILENAME, QSettings::IniFormat }
+    , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     //ui->tableWidget_data->setRowCount(0);
@@ -37,8 +37,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_action_open_triggered()
 {
     // load start path
-    QString startPath = m_settings.value(Settings::SETTINGS_FILE_START_PATH, "").toString();
-    QString fileName = "";
+    QString startPath{ m_settings.value(Settings::SETTINGS_FILE_START_PATH, "").toString() };
+    QString fileName{ "" };
     // When startpath was set in options, open dialog with this start path
     if (startPath != "")
     {
@@ -57,27 +57,28 @@ void MainWindow::loadProfiles()
     ui->comboBox_profiles->clear();
     m_profiles.clear();
     JSONHelper::readFromJson(JSONHelper::PROFILES_FILENAME, &m_profiles);
+    qDebug() << "Item cnt " << m_profiles.size() << "\n";
     for (const Profile &profile : m_profiles)
     {
-        ui->comboBox_profiles->addItem(profile.getName());
+        ui->comboBox_profiles->addItem(profile.getName());        
     }
 }
 
 void MainWindow::loadCSVFile(QString fileName)
 {
-    QFile file(fileName);
+    QFile file{ fileName };
     if (!file.open(QIODevice::ReadOnly))
     {
         qDebug() << "Error by opening file \n";
         return;
     }
-    QTextStream in(&file);
+    QTextStream in{ &file };
 
     //in.setCodec("UTF-8");
     // Use Latin1 to show german chars
     in.setCodec("Latin1");
     //QStringList loadedData;
-    int row = 0;
+    int row{ 0 };
     while(!in.atEnd())
     {
         ui->tableWidget_data->insertRow(row);
@@ -85,7 +86,7 @@ void MainWindow::loadCSVFile(QString fileName)
         // Split line by separator and store data
         loadedData << in.readLine().split(";");
         // Show in TableWidget
-        int column = 0;
+        int column{ 0 };
         for (QString s : loadedData)
         {
             // Add the columns when there are not already created
@@ -93,7 +94,7 @@ void MainWindow::loadCSVFile(QString fileName)
             {
                 ui->tableWidget_data->insertColumn(column);
             }
-            QTableWidgetItem *item = new QTableWidgetItem(s);
+            QTableWidgetItem *item{ new QTableWidgetItem(s) };
             ui->tableWidget_data->setItem(row, column, item);
             column++;
         }
@@ -141,18 +142,18 @@ void MainWindow::on_pushButton_print_clicked()
         QMessageBox::information(this, "Nope", "Please select a profile for printing");
         return;
     }
-    QString key = ui->comboBox_profiles->currentText();
+    QString key{ ui->comboBox_profiles->currentText() };
 
-    QString tempText = m_profiles[key].getTemplateText();
+    QString tempText{ m_profiles[key].getTemplateText() };
     // Replace placeholders which column data
-    for (int i = 0; i < ui->tableWidget_data->columnCount(); i++)
+    for (int i{ 0 }; i < ui->tableWidget_data->columnCount(); i++)
     {
-        QString data = ui->tableWidget_data->selectedItems().at(i)->text();
+        QString data{ ui->tableWidget_data->selectedItems().at(i)->text() };
         // Placeholder has the form $(column)
         tempText.replace("$(" + QString::number(i + 1) + ")", data);
     }
     // Show dialog which show the data for printing
-    PrintShowDialog dialog(nullptr, tempText);
+    PrintShowDialog dialog{ nullptr, tempText };
     dialog.setModal(true);
     dialog.exec();
 }
