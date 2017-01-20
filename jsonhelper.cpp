@@ -61,7 +61,6 @@ bool JSONHelper::readFromJson(QString fileName, QMap<QString, Profile> *profiles
         Profile profile;
         profile.readFromJson(profileObject);
         profiles->insert(profile.getName(), profile);
-        qDebug() << "Inserted \n";
     }
     return true;
 }

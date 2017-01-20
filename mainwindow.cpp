@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tableWidget_data->setSelectionMode(QAbstractItemView::SingleSelection);
 
     ui->tableWidget_data->hide();
-    ui->comboBox_profiles->hide();
+    //ui->comboBox_profiles->hide();
     ui->pushButton_print->hide();
     loadProfiles();
 }
@@ -57,7 +57,6 @@ void MainWindow::loadProfiles()
     ui->comboBox_profiles->clear();
     m_profiles.clear();
     JSONHelper::readFromJson(JSONHelper::PROFILES_FILENAME, &m_profiles);
-    qDebug() << "Item cnt " << m_profiles.size() << "\n";
     for (const Profile &profile : m_profiles)
     {
         ui->comboBox_profiles->addItem(profile.getName());        
@@ -66,6 +65,18 @@ void MainWindow::loadProfiles()
 
 void MainWindow::loadCSVFile(QString fileName)
 {
+    // Load options from selected profile, if there is no profile
+    // use default values
+    QString seperator{ "," };
+    bool containsHeader{ false };
+    if (ui->comboBox_profiles->count() > 0)
+    {
+        QString key{ ui->comboBox_profiles->currentText() };
+        const Profile &profile{ m_profiles[key] };
+        seperator = profile.getSeperator();
+        containsHeader = profile.containsHeader();
+    }
+
     QFile file{ fileName };
     if (!file.open(QIODevice::ReadOnly))
     {
@@ -77,14 +88,14 @@ void MainWindow::loadCSVFile(QString fileName)
     //in.setCodec("UTF-8");
     // Use Latin1 to show german chars
     in.setCodec("Latin1");
-    //QStringList loadedData;
+
     int row{ 0 };
     while(!in.atEnd())
     {
         ui->tableWidget_data->insertRow(row);
         QStringList loadedData;
         // Split line by separator and store data
-        loadedData << in.readLine().split(";");
+        loadedData << in.readLine().split(seperator);
         // Show in TableWidget
         int column{ 0 };
         for (QString s : loadedData)
@@ -125,7 +136,6 @@ void MainWindow::on_actionClear_triggered()
 
     // Hide widgets which are not needed without loaded data
     ui->tableWidget_data->hide();
-    ui->comboBox_profiles->hide();
     ui->pushButton_print->hide();
 }
 
