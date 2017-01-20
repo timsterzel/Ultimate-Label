@@ -1,17 +1,19 @@
 #include "profile.h"
 
-const QString Profile::JSON_NAME = "name";
-const QString Profile::JSON_SEPERATOR = "seperator";
-const QString Profile::JSON_TEMPLATETEXT = "templateText";
+const QString Profile::JSON_NAME{ "name" };
+const QString Profile::JSON_SEPERATOR{ "seperator" };
+const QString Profile::JSON_CONTAINSHEADER{ "containsHeader" };
+const QString Profile::JSON_TEMPLATETEXT{ "templateText" };
 
 Profile::Profile()
 {
 
 }
 
-Profile::Profile(QString name, QString seperator, QString templateText)
+Profile::Profile(QString name, QString seperator, bool containsHeader, QString templateText)
 : m_name{ name }
 , m_seperator{ seperator }
+, m_containsHeader{ containsHeader }
 , m_templateText{ templateText }
 {
 
@@ -37,6 +39,17 @@ void Profile::setSeperator(QString seperator)
     m_seperator = seperator;
 }
 
+
+bool Profile::containsHeader() const
+{
+    return m_containsHeader;
+}
+
+void Profile::setContainsHeader(bool containsHeader)
+{
+    m_containsHeader = containsHeader;
+}
+
 QString Profile::getTemplateText() const
 {
     return m_templateText;
@@ -51,6 +64,7 @@ void Profile::writeToJson(QJsonObject &json) const
 {
     json.insert(JSON_NAME, m_name);
     json.insert(JSON_SEPERATOR, m_seperator);
+    json.insert(JSON_CONTAINSHEADER, m_containsHeader);
     json.insert(JSON_TEMPLATETEXT, m_templateText);
 }
 
@@ -58,5 +72,6 @@ void Profile::readFromJson(QJsonObject &json)
 {
     m_name = json.value(JSON_NAME).toString();
     m_seperator = json.value(JSON_SEPERATOR).toString();
+    m_containsHeader = json.value(JSON_CONTAINSHEADER).toBool();
     m_templateText = json.value(JSON_TEMPLATETEXT).toString();
 }

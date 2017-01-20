@@ -80,6 +80,13 @@
         <widget class="QLineEdit" name="lineEdit_separator"/>
        </item>
        <item>
+        <widget class="QCheckBox" name="checkBox_containsHeader">
+         <property name="text">
+          <string>Contains header</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLabel" name="label_temlate">
          <property name="text">
           <string>Template</string>
