@@ -88,29 +88,46 @@ void MainWindow::loadCSVFile(QString fileName)
     //in.setCodec("UTF-8");
     // Use Latin1 to show german chars
     in.setCodec("Latin1");
-
+    // True when table was empty by starting in this method
+    bool wasTableEmpty{ ui->tableWidget_data->rowCount() < 1 };
+    // When we start we are always in first row
+    bool isFirstRow{ true };
     int row{ 0 };
     while(!in.atEnd())
     {
-        ui->tableWidget_data->insertRow(row);
-        QStringList loadedData;
+        QStringList loadedData;        
         // Split line by separator and store data
         loadedData << in.readLine().split(seperator);
-        // Show in TableWidget
-        int column{ 0 };
-        for (QString s : loadedData)
+        // When table was empty we have to create the columns first
+        if (isFirstRow && wasTableEmpty)
         {
-            // Add the columns when there are not already created
-            if (ui->tableWidget_data->columnCount() < loadedData.size())
+            for (int i{ 0 }; i < loadedData.size(); i++)
             {
-                ui->tableWidget_data->insertColumn(column);
+                ui->tableWidget_data->insertColumn(i);
             }
-            QTableWidgetItem *item{ new QTableWidgetItem(s) };
-            ui->tableWidget_data->setItem(row, column, item);
-            column++;
+            if (containsHeader)
+            {
+                // No data is in table yet and csv file has header, so we show the header
+                ui->tableWidget_data->setHorizontalHeaderLabels(loadedData);
+            }
         }
-        row++;
+        // Load table data
+        if (!isFirstRow || !containsHeader)
+        {
+            ui->tableWidget_data->insertRow(row);
+            // Show in TableWidget
+            int column{ 0 };
+            for (QString s : loadedData)
+            {
+                QTableWidgetItem *item{ new QTableWidgetItem(s) };
+                ui->tableWidget_data->setItem(row, column, item);
+                column++;
+            }
+            row++;
+        }
+        isFirstRow = false;
     }
+
     // Show needed widget with loaded data
     ui->tableWidget_data->show();
     ui->comboBox_profiles->show();
