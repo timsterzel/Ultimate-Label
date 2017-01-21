@@ -41,4 +41,5 @@ CONFIG += console
 
 TRANSLATIONS = ultimatelabel_lang_de.ts
 
-RESOURCES = languages.qrc
+RESOURCES = languages.qrc \
+    general.qrc
