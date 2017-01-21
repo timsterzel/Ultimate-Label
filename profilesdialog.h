@@ -32,11 +32,13 @@ private slots:
 
        void on_lineEdit_separator_editingFinished();
 
+       void on_comboBox_codec_currentTextChanged(const QString &arg1);
+
        void on_checkBox_containsHeader_stateChanged(int arg1);
 
        void on_plainTextEdit_template_textChanged();
 
-       void on_buttonBox_accepted();       
+       void on_buttonBox_accepted();
 
 private:
     // Set all option widgets to enabled or not enabled

@@ -80,6 +80,37 @@
         <widget class="QLineEdit" name="lineEdit_separator"/>
        </item>
        <item>
+        <widget class="QLabel" name="label_codec">
+         <property name="text">
+          <string>Codec</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_codec">
+         <item>
+          <property name="text">
+           <string>Latin1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>UTF-8</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>UTF-16</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>UTF-32</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="checkBox_containsHeader">
          <property name="text">
           <string>Contains header</string>

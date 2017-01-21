@@ -137,6 +137,11 @@ void ProfilesDialog::on_lineEdit_separator_editingFinished()
     profile.setSeperator(ui->lineEdit_separator->text());
 }
 
+void ProfilesDialog::on_comboBox_codec_currentTextChanged(const QString &arg1)
+{
+    qDebug() << "CurrentTextChanged " << arg1 << "\n";
+}
+
 void ProfilesDialog::on_checkBox_containsHeader_stateChanged(int arg1)
 {
         // if nothing is selected, there is nothing to do
@@ -167,3 +172,5 @@ void ProfilesDialog::on_buttonBox_accepted()
 {
     JSONHelper::writeToJson(JSONHelper::PROFILES_FILENAME, m_profiles);
 }
+
+
