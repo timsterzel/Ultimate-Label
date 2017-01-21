@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     profile.cpp \
     printshowdialog.cpp \
     settingsdialog.cpp \
-    manualdialog.cpp
+    manualdialog.cpp \
+    aboutdialog.cpp
 
 HEADERS  += mainwindow.h \
     profilesdialog.h \
@@ -29,13 +30,15 @@ HEADERS  += mainwindow.h \
     printshowdialog.h \
     settingsdialog.h \
     settings.h \
-    manualdialog.h
+    manualdialog.h \
+    aboutdialog.h
 
 FORMS    += mainwindow.ui \
     profilesdialog.ui \
     printshowdialog.ui \
     settingsdialog.ui \
-    manualdialog.ui
+    manualdialog.ui \
+    aboutdialog.ui
 # Add Console for debugging purposes
 CONFIG += console
 

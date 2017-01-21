@@ -1,5 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+#include "aboutdialog.h"
 #include "manualdialog.h"
 #include "profile.h"
 #include <QMainWindow>
@@ -20,6 +21,7 @@ private:
     QSettings m_settings;
     QMap<QString,Profile> m_profiles;
     ManualDialog *m_manualDialog;
+    AboutDialog *m_aboutDialog;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -40,6 +42,8 @@ private slots:
     void on_actionSettings_triggered();
 
     void on_actionManual_triggered();
+
+    void on_actionAbout_triggered();
 
 private:
     Ui::MainWindow *ui;
