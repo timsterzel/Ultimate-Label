@@ -1,10 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+#include "manualdialog.h"
 #include "profile.h"
 #include <QMainWindow>
 #include <QMap>
 #include <QSettings>
 #include <QString>
+#include <memory>
 
 
 namespace Ui {
@@ -17,6 +19,7 @@ class MainWindow : public QMainWindow
 private:
     QSettings m_settings;
     QMap<QString,Profile> m_profiles;
+    ManualDialog *m_manualDialog;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -35,6 +38,8 @@ private slots:
     void on_tableHorizontalHeaderClicked(int index);
 
     void on_actionSettings_triggered();
+
+    void on_actionManual_triggered();
 
 private:
     Ui::MainWindow *ui;

@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     jsonhelper.cpp \
     profile.cpp \
     printshowdialog.cpp \
-    settingsdialog.cpp
+    settingsdialog.cpp \
+    manualdialog.cpp
 
 HEADERS  += mainwindow.h \
     profilesdialog.h \
@@ -27,12 +28,14 @@ HEADERS  += mainwindow.h \
     profile.h \
     printshowdialog.h \
     settingsdialog.h \
-    settings.h
+    settings.h \
+    manualdialog.h
 
 FORMS    += mainwindow.ui \
     profilesdialog.ui \
     printshowdialog.ui \
-    settingsdialog.ui
+    settingsdialog.ui \
+    manualdialog.ui
 # Add Console for debugging purposes
 CONFIG += console
 

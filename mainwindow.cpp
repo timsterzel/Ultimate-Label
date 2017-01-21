@@ -14,6 +14,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , m_settings{ Settings::SETTINGS_FILENAME, QSettings::IniFormat }
+    , m_manualDialog{ nullptr }
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -203,4 +204,11 @@ void MainWindow::on_actionSettings_triggered()
     dialog.exec();
 }
 
-
+void MainWindow::on_actionManual_triggered()
+{
+    if (!m_manualDialog) {
+        m_manualDialog = new ManualDialog(this);
+    }
+    m_manualDialog->setModal(false);
+    m_manualDialog->show();
+}
