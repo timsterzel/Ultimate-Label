@@ -42,6 +42,8 @@ void ProfilesDialog::clearOptionFields()
 {
     ui->lineEdit_name->setText("");
     ui->lineEdit_separator->setText("");
+    ui->comboBox_codec->setCurrentIndex(0);
+    ui->checkBox_containsHeader->setChecked(false);
     ui->plainTextEdit_template->clear();
 }
 
@@ -66,6 +68,7 @@ void ProfilesDialog::on_listWidget_profiles_currentItemChanged(QListWidgetItem *
         const Profile &profile{ m_profiles.value(key) };
         ui->lineEdit_name->setText(profile.getName());
         ui->lineEdit_separator->setText(profile.getSeperator());
+        ui->comboBox_codec->setCurrentText(profile.getCodec());
         ui->checkBox_containsHeader->setChecked(profile.containsHeader());
         ui->plainTextEdit_template->setPlainText(profile.getTemplateText());
     }
@@ -95,7 +98,7 @@ void ProfilesDialog::on_pushButton_delete_clicked()
 void ProfilesDialog::on_pushButton_new_clicked()
 {
     QString defaultName{ findUniqueName("New Profile") };
-    m_profiles.insert(defaultName, { defaultName, "", false, "" });
+    m_profiles.insert(defaultName, { defaultName, "", "UTF-8", false, "" });
     ui->listWidget_profiles->addItem(defaultName);
     // Select new created item
     ui->listWidget_profiles->setCurrentRow(m_profiles.size() - 1);
@@ -139,7 +142,14 @@ void ProfilesDialog::on_lineEdit_separator_editingFinished()
 
 void ProfilesDialog::on_comboBox_codec_currentTextChanged(const QString &arg1)
 {
-    qDebug() << "CurrentTextChanged " << arg1 << "\n";
+    // if nothing is selected, there is nothing to do
+    if (ui->listWidget_profiles->selectedItems().count() < 1)
+    {
+        return;
+    }
+    QString key{ ui->listWidget_profiles->currentItem()->text() };
+    Profile &profile{ m_profiles[key] };
+    profile.setCodec(arg1);
 }
 
 void ProfilesDialog::on_checkBox_containsHeader_stateChanged(int arg1)

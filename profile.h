@@ -9,6 +9,7 @@ private:
     // Identifier for Json file
     static const QString JSON_NAME;
     static const QString JSON_SEPERATOR;
+    static const QString JSON_CODEC;
     static const QString JSON_CONTAINSHEADER;
     static const QString JSON_TEMPLATETEXT;
 
@@ -19,7 +20,7 @@ private:
     QString m_templateText;
 public:
     Profile();
-    Profile(QString name, QString seperator, bool containsHeader, QString codec, QString templateText);
+    Profile(QString name, QString seperator, QString codec, bool containsHeader, QString templateText);
 
     QString getName() const;
     void setName(QString name);

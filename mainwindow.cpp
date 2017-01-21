@@ -9,6 +9,7 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QTextCodec>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -68,12 +69,14 @@ void MainWindow::loadCSVFile(QString fileName)
     // Load options from selected profile, if there is no profile
     // use default values
     QString seperator{ "," };
+    QString codec{ "UTF-8" };
     bool containsHeader{ false };
     if (ui->comboBox_profiles->count() > 0)
     {
         QString key{ ui->comboBox_profiles->currentText() };
         const Profile &profile{ m_profiles[key] };
         seperator = profile.getSeperator();
+        codec = profile.getCodec();
         containsHeader = profile.containsHeader();
     }
 
@@ -85,9 +88,8 @@ void MainWindow::loadCSVFile(QString fileName)
     }
     QTextStream in{ &file };
 
-    //in.setCodec("UTF-8");
-    // Use Latin1 to show german chars
-    in.setCodec("Latin1");
+    //QTextCodec textCodec(codec);
+    in.setCodec(QTextCodec::codecForName(codec.toUtf8()));
     // True when table was empty by starting in this method
     bool wasTableEmpty{ ui->tableWidget_data->rowCount() < 1 };
     // When we start we are always in first row
