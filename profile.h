@@ -12,19 +12,23 @@ private:
     static const QString JSON_CONTAINSHEADER;
     static const QString JSON_TEMPLATETEXT;
 
-    QString m_name;
+    QString m_name;    
     QString m_seperator;
+    QString m_codec;
     bool m_containsHeader;
     QString m_templateText;
 public:
     Profile();
-    Profile(QString name, QString seperator, bool containsHeader, QString templateText);
+    Profile(QString name, QString seperator, bool containsHeader, QString codec, QString templateText);
 
     QString getName() const;
     void setName(QString name);
 
     QString getSeperator() const;
     void setSeperator(QString seperator);
+
+    QString getCodec() const;
+    void setCodec(QString codec);
 
     bool containsHeader() const;
     void setContainsHeader(bool containsHeader);

@@ -10,9 +10,10 @@ Profile::Profile()
 
 }
 
-Profile::Profile(QString name, QString seperator, bool containsHeader, QString templateText)
+Profile::Profile(QString name, QString seperator, bool containsHeader, QString codec, QString templateText)
 : m_name{ name }
 , m_seperator{ seperator }
+, m_codec{ codec }
 , m_containsHeader{ containsHeader }
 , m_templateText{ templateText }
 {
@@ -39,6 +40,15 @@ void Profile::setSeperator(QString seperator)
     m_seperator = seperator;
 }
 
+QString Profile::getCodec() const
+{
+    return m_codec;
+}
+
+void Profile::setCodec(QString codec)
+{
+    m_codec = codec;
+}
 
 bool Profile::containsHeader() const
 {
