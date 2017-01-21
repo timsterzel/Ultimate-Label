@@ -8,7 +8,7 @@ ProfilesDialog::ProfilesDialog(QWidget *parent)
     , ui(new Ui::ProfilesDialog)
 {
     ui->setupUi(this);
-
+    setWindowTitle(tr("Profiles"));
     setOptionsEnabled(false);
 
     // Load profiles

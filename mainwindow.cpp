@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowTitle(tr("Ultimate Label"));
     //ui->tableWidget_data->setRowCount(0);
     //ui->tableWidget_data->setColumnCount(0);
     ui->tableWidget_data->horizontalHeader()->setStretchLastSection(true);

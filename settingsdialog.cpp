@@ -8,7 +8,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     , ui(new Ui::SettingsDialog)
 {
     ui->setupUi(this);    
-
+    setWindowTitle(tr("Settings"));
     QString profilesStartPath{ m_settings.value(Settings::SETTINGS_FILE_START_PATH, "").toString() };
     ui->lineEdit_startPath->setText(profilesStartPath);
 }
