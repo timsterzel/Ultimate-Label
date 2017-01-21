@@ -12,7 +12,7 @@ PrintShowDialog::PrintShowDialog(QWidget *parent, QString dataToShow)
     , ui(new Ui::PrintShowDialog)
 {
     ui->setupUi(this);
-    setWindowTitle(tr("Drucken"));
+    setWindowTitle(tr("Print"));
     ui->textEditHtml->insertHtml(dataToShow);
 }
 

@@ -2,37 +2,120 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="de_DE">
 <context>
+    <name>AboutDialog</name>
+    <message>
+        <location filename="aboutdialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished">Dialog</translation>
+    </message>
+    <message>
+        <location filename="aboutdialog.ui" line="32"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="aboutdialog.ui" line="39"/>
+        <source>Ultimate Label</source>
+        <translation>Ultimate Label</translation>
+    </message>
+    <message>
+        <location filename="aboutdialog.ui" line="46"/>
+        <source>1.0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="aboutdialog.ui" line="53"/>
+        <source>2017 Tim Sterzel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="aboutdialog.ui" line="60"/>
+        <source>Under GNU GENERAL PUBLIC LICENSE  Version 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="aboutdialog.cpp" line="9"/>
+        <source>About</source>
+        <translation>Über</translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="14"/>
         <source>MainWindow</source>
-        <translation type="finished">Hauptfenster</translation>
+        <translation>Hauptfenster</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="42"/>
         <source>Print</source>
-        <translation type="finished">Drucken</translation>
+        <translation>Drucken</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="61"/>
         <source>File</source>
-        <translation type="finished">Datei</translation>
+        <translation>Datei</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="72"/>
-        <location filename="mainwindow.cpp" line="36"/>
+        <location filename="mainwindow.ui" line="68"/>
+        <source>Edit</source>
+        <translation>Bearbeiten</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="75"/>
+        <source>Help</source>
+        <translation>Hilfe</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="88"/>
+        <location filename="mainwindow.cpp" line="50"/>
+        <location filename="mainwindow.cpp" line="55"/>
         <source>Open</source>
-        <translation type="finished">Öffnen</translation>
+        <translation>Öffnen</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="77"/>
+        <location filename="mainwindow.ui" line="93"/>
         <source>Profiles</source>
-        <translation type="finished">Profile</translation>
+        <translation>Profile</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="82"/>
+        <location filename="mainwindow.ui" line="98"/>
         <source>Clear</source>
-        <translation type="finished">Leeren</translation>
+        <translation>Leeren</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="103"/>
+        <source>Settings</source>
+        <translation>Einstellungen</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="108"/>
+        <location filename="mainwindow.ui" line="118"/>
+        <source>Manual</source>
+        <translation>Handbuch</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="113"/>
+        <source>About</source>
+        <translation>Über</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="22"/>
+        <source>Ultimate Label</source>
+        <translation>Ultimate Label</translation>
+    </message>
+</context>
+<context>
+    <name>ManualDialog</name>
+    <message>
+        <location filename="manualdialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished">Dialog</translation>
+    </message>
+    <message>
+        <location filename="manualdialog.cpp" line="9"/>
+        <source>Manual</source>
+        <translation>Handbuch</translation>
     </message>
 </context>
 <context>
@@ -40,12 +123,43 @@
     <message>
         <location filename="printshowdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="finished">Dialog</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
-        <location filename="printshowdialog.ui" line="23"/>
+        <location filename="printshowdialog.ui" line="25"/>
+        <source>Save</source>
+        <translation>Speichern</translation>
+    </message>
+    <message>
+        <location filename="printshowdialog.ui" line="32"/>
+        <location filename="printshowdialog.cpp" line="15"/>
         <source>Print</source>
-        <translation type="finished">Drucken</translation>
+        <translation>Drucken</translation>
+    </message>
+    <message>
+        <location filename="printshowdialog.cpp" line="34"/>
+        <source>Error by opening printer</source>
+        <translation>Fehler beim öffnen des Druckers</translation>
+    </message>
+    <message>
+        <location filename="printshowdialog.cpp" line="34"/>
+        <source>Cannot print file</source>
+        <translation>Dokument kann nicht gedruckt werden</translation>
+    </message>
+    <message>
+        <location filename="printshowdialog.cpp" line="69"/>
+        <source>Save to</source>
+        <translation>Speichern unter</translation>
+    </message>
+    <message>
+        <location filename="printshowdialog.cpp" line="74"/>
+        <source>Error by saving file</source>
+        <translation>Fehler beim speichern des Dokuments</translation>
+    </message>
+    <message>
+        <location filename="printshowdialog.cpp" line="74"/>
+        <source>Cannot save file</source>
+        <translation>Dokument kann nicht gespeichert werden</translation>
     </message>
 </context>
 <context>
@@ -53,32 +167,86 @@
     <message>
         <location filename="profilesdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="finished">Dialog</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="profilesdialog.ui" line="39"/>
         <source>New</source>
-        <translation type="finished">Neu</translation>
+        <translation>Neu</translation>
     </message>
     <message>
         <location filename="profilesdialog.ui" line="46"/>
         <source>Delete</source>
-        <translation type="finished">Löschen</translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <location filename="profilesdialog.ui" line="59"/>
         <source>Name</source>
-        <translation type="finished">Name</translation>
+        <translation>Name</translation>
     </message>
     <message>
         <location filename="profilesdialog.ui" line="72"/>
         <source>Separator</source>
-        <translation type="finished">Separator</translation>
+        <translation>Separator</translation>
     </message>
     <message>
         <location filename="profilesdialog.ui" line="85"/>
+        <source>Codec</source>
+        <translation>Zeichensatz</translation>
+    </message>
+    <message>
+        <location filename="profilesdialog.ui" line="93"/>
+        <source>Latin1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="profilesdialog.ui" line="98"/>
+        <source>UTF-8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="profilesdialog.ui" line="103"/>
+        <source>UTF-16</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="profilesdialog.ui" line="108"/>
+        <source>UTF-32</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="profilesdialog.ui" line="116"/>
+        <source>Contains header</source>
+        <translation>Kopfzeile vorhanden</translation>
+    </message>
+    <message>
+        <location filename="profilesdialog.ui" line="123"/>
         <source>Template</source>
-        <translation type="finished">Template</translation>
+        <translation>Vorlage</translation>
+    </message>
+    <message>
+        <location filename="profilesdialog.cpp" line="11"/>
+        <source>Profiles</source>
+        <translation>Profile</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDialog</name>
+    <message>
+        <location filename="settingsdialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished">Dialog</translation>
+    </message>
+    <message>
+        <location filename="settingsdialog.ui" line="20"/>
+        <source>File open path (Default start path when opening a file)</source>
+        <oldsource>File open path (Defualt start path when opening a file)</oldsource>
+        <translation>Standart Pfad für das öffnen von Dateien</translation>
+    </message>
+    <message>
+        <location filename="settingsdialog.cpp" line="11"/>
+        <source>Settings</source>
+        <translation>Einstellungen</translation>
     </message>
 </context>
 </TS>

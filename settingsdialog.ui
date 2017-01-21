@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label_startPath">
      <property name="text">
-      <string>File open path (Defualt start path when opening a file)</string>
+      <string>File open path (Default start path when opening a file)</string>
      </property>
      <property name="buddy">
       <cstring>lineEdit_startPath</cstring>
