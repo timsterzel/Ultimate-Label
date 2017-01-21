@@ -18,6 +18,8 @@ public:
 private slots:
     void on_pushButton_print_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::PrintShowDialog *ui;
 };

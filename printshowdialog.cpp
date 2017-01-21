@@ -1,6 +1,8 @@
 #include "printshowdialog.h"
 #include "ui_printshowdialog.h"
 #include <QDebug>
+#include <QFileDialog>
+#include <QMessageBox>
 #include <QPainter>
 #include <QPrinter>
 #include <QPrintDialog>
@@ -29,6 +31,7 @@ void PrintShowDialog::on_pushButton_print_clicked()
     if (dialog.exec() != QDialog::Accepted)
     {
         qDebug() << "Error by opening Printer dialog\n";
+        QMessageBox::information(this, tr("Error by opening printer"), tr("Cannot print file"));
         return;
     }
     printer.setPaperSize(QSizeF(62, 29), QPrinter::Millimeter);
@@ -42,7 +45,6 @@ void PrintShowDialog::on_pushButton_print_clicked()
     painter.scale(scale, scale);
     // Print
     doc->drawContents(&painter);
-
 
     //ui->textEditHtml->print(&printer);
 
@@ -60,4 +62,19 @@ void PrintShowDialog::on_pushButton_print_clicked()
     ui->textEditHtml->render(&painter);
     */
 
+}
+
+void PrintShowDialog::on_pushButton_clicked()
+{
+    QString fileName{ QFileDialog::getSaveFileName(this, tr("Save to"), "unnamed.html") };
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly))
+    {
+        qDebug() << "Error by saving file: " << fileName << "\n";
+        QMessageBox::information(this, tr("Error by saving file"), tr("Cannot save file"));
+        return;
+    }
+    QTextStream out(&file);
+    out << ui->textEditHtml->toHtml();
+    file.close();
 }
