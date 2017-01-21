@@ -14,7 +14,7 @@
    <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
+   <item alignment="Qt::AlignHCenter">
     <widget class="QLabel" name="label_logo">
      <property name="minimumSize">
       <size>
@@ -33,31 +33,31 @@
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QLabel" name="label_versionHeader">
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QLabel" name="label_appName">
      <property name="text">
-      <string>Version</string>
+      <string>Ultimate Label</string>
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QLabel" name="label_versionValue">
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QLabel" name="label_version">
      <property name="text">
       <string>1.0</string>
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QLabel" name="label_developerHeader">
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QLabel" name="label_developer">
      <property name="text">
-      <string>Entwickler</string>
+      <string>2017 Tim Sterzel</string>
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QLabel" name="label_developerValue">
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QLabel" name="label">
      <property name="text">
-      <string>Tim Sterzel</string>
+      <string>Under GNU GENERAL PUBLIC LICENSE  Version 3</string>
      </property>
     </widget>
    </item>
