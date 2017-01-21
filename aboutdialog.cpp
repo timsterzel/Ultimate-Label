@@ -7,6 +7,10 @@ AboutDialog::AboutDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle(tr("About"));
+
+    QPixmap pixmap(":/logo.png");
+    ui->label_logo->setPixmap(pixmap);
+
 }
 
 AboutDialog::~AboutDialog()
