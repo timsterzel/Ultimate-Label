@@ -28,6 +28,23 @@
     <widget class="QLineEdit" name="lineEdit_startPath"/>
    </item>
    <item>
+    <widget class="QLabel" name="label_customSIze">
+     <property name="text">
+      <string>Custom Size defaults (width, height)</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QSpinBox" name="spinBox_customWidth"/>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_customHeight"/>
+     </item>
+    </layout>
+   </item>
+   <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>

@@ -10,7 +10,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->setupUi(this);    
     setWindowTitle(tr("Settings"));
     QString profilesStartPath{ m_settings.value(Settings::SETTINGS_FILE_START_PATH, "").toString() };
+    int customWidth{ m_settings.value(Settings::SETTINGS_CUSTOM_WIDTH, "0").toInt() };
+    int customHeight{ m_settings.value(Settings::SETTINGS_CUSTOM_HEIGHT, "0").toInt() };
     ui->lineEdit_startPath->setText(profilesStartPath);
+    ui->spinBox_customWidth->setValue(customWidth);
+    ui->spinBox_customHeight->setValue(customHeight);
 }
 
 SettingsDialog::~SettingsDialog()
@@ -21,4 +25,6 @@ SettingsDialog::~SettingsDialog()
 void SettingsDialog::on_buttonBox_accepted()
 {
     m_settings.setValue(Settings::SETTINGS_FILE_START_PATH, ui->lineEdit_startPath->text());
+    m_settings.setValue(Settings::SETTINGS_CUSTOM_WIDTH, ui->spinBox_customWidth->value());
+    m_settings.setValue(Settings::SETTINGS_CUSTOM_HEIGHT, ui->spinBox_customHeight->value());
 }

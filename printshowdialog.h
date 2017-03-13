@@ -2,6 +2,7 @@
 #define PRINTSHOWDIALOG_H
 
 #include <QDialog>
+#include <QSettings>
 
 namespace Ui {
 class PrintShowDialog;
@@ -10,7 +11,8 @@ class PrintShowDialog;
 class PrintShowDialog : public QDialog
 {
     Q_OBJECT
-
+private:
+    QSettings m_settings;
 public:
     PrintShowDialog(QWidget *parent = 0, QString dataToShow = "");
     ~PrintShowDialog();
@@ -19,6 +21,10 @@ private slots:
     void on_pushButton_print_clicked();
 
     void on_pushButton_clicked();
+
+    void on_checkBox_defaultSize_clicked();
+
+    void on_checkBox_defaultSize_stateChanged(int arg1);
 
 private:
     Ui::PrintShowDialog *ui;
