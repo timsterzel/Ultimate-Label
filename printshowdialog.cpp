@@ -23,6 +23,8 @@ PrintShowDialog::PrintShowDialog(QWidget *parent, QString dataToShow)
     int customHeight{ m_settings.value(Settings::SETTINGS_CUSTOM_HEIGHT, "0").toInt() };
     ui->spinBox_customWidth->setValue(customWidth);
     ui->spinBox_customHeight->setValue(customHeight);
+
+    ui->checkBox_defaultSize->setChecked(true);
 }
 
 PrintShowDialog::~PrintShowDialog()
@@ -102,6 +104,7 @@ void PrintShowDialog::on_checkBox_defaultSize_clicked()
 
 void PrintShowDialog::on_checkBox_defaultSize_stateChanged(int state)
 {
+    qDebug() << "CHanged \n";
     ui->spinBox_customWidth->setEnabled(state);
     ui->spinBox_customHeight->setEnabled(state);
 }
