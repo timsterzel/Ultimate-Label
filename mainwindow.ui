@@ -15,11 +15,35 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item alignment="Qt::AlignTop">
-     <widget class="QComboBox" name="comboBox_profiles"/>
-    </item>
     <item>
-     <widget class="QTableWidget" name="tableWidget_data"/>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tab_csv">
+       <attribute name="title">
+        <string>CSV</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item alignment="Qt::AlignTop">
+         <widget class="QComboBox" name="comboBox_profiles"/>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tableWidget_data"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_text">
+       <attribute name="title">
+        <string>Label</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QTextEdit" name="textEdit_label"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_buttons">
@@ -53,7 +77,7 @@
      <x>0</x>
      <y>0</y>
      <width>528</width>
-     <height>28</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuDatei">
@@ -83,6 +107,17 @@
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
   <action name="action_open">
    <property name="text">
     <string>Open</string>

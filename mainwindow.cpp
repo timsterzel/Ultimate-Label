@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->tableWidget_data->hide();
     //ui->comboBox_profiles->hide();
-    ui->pushButton_print->hide();
+    //ui->pushButton_print->hide();
     loadProfiles();
 }
 
@@ -164,31 +164,43 @@ void MainWindow::on_actionClear_triggered()
 
 void MainWindow::on_pushButton_print_clicked()
 {
-    // Only print when there is a row selected and a profile is selected
-    if (ui->tableWidget_data->selectedItems().size() < 1)
+    // Print csv data
+    if (ui->tabWidget->currentIndex() == 0)
     {
-        QMessageBox::information(this, "Nope", "Please select a row to print");
-        return;
-    }
-    if (ui->comboBox_profiles->count() < 1)
-    {
-        QMessageBox::information(this, "Nope", "Please select a profile for printing");
-        return;
-    }
-    QString key{ ui->comboBox_profiles->currentText() };
+        // Only print when there is a row selected and a profile is selected
+        if (ui->tableWidget_data->selectedItems().size() < 1)
+        {
+            QMessageBox::information(this, "Nope", "Please select a row to print");
+            return;
+        }
+        if (ui->comboBox_profiles->count() < 1)
+        {
+            QMessageBox::information(this, "Nope", "Please select a profile for printing");
+            return;
+        }
+        QString key{ ui->comboBox_profiles->currentText() };
 
-    QString tempText{ m_profiles[key].getTemplateText() };
-    // Replace placeholders which column data
-    for (int i{ 0 }; i < ui->tableWidget_data->columnCount(); i++)
-    {
-        QString data{ ui->tableWidget_data->selectedItems().at(i)->text() };
-        // Placeholder has the form $(column)
-        tempText.replace("$(" + QString::number(i + 1) + ")", data);
+        QString tempText{ m_profiles[key].getTemplateText() };
+        // Replace placeholders which column data
+        for (int i{ 0 }; i < ui->tableWidget_data->columnCount(); i++)
+        {
+            QString data{ ui->tableWidget_data->selectedItems().at(i)->text() };
+            // Placeholder has the form $(column)
+            tempText.replace("$(" + QString::number(i + 1) + ")", data);
+        }
+        // Show dialog which show the data for printing
+        PrintShowDialog dialog{ nullptr, tempText };
+        dialog.setModal(true);
+        dialog.exec();
     }
-    // Show dialog which show the data for printing
-    PrintShowDialog dialog{ nullptr, tempText };
-    dialog.setModal(true);
-    dialog.exec();
+    // Print data of text edit in label tab
+    else if (ui->tabWidget->currentIndex() == 1)
+    {
+        QString printText{ ui->textEdit_label->toHtml() };
+        PrintShowDialog dialog{ nullptr, printText };
+        dialog.setModal(true);
+        dialog.exec();
+    }
 }
 
 void MainWindow::on_tableHorizontalHeaderClicked(int index)
