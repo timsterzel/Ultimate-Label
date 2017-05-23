@@ -15,6 +15,7 @@ PrintShowDialog::PrintShowDialog(QWidget *parent, QString dataToShow)
 {
     ui->setupUi(this);
     setWindowTitle(tr("Print"));
+    setWindowIcon(QIcon(":/logo.png"));
     ui->textEditHtml->insertHtml(dataToShow);
     ui->spinBox_customWidth->setEnabled(false);
     ui->spinBox_customHeight->setEnabled(false);
@@ -24,7 +25,7 @@ PrintShowDialog::PrintShowDialog(QWidget *parent, QString dataToShow)
     ui->spinBox_customWidth->setValue(customWidth);
     ui->spinBox_customHeight->setValue(customHeight);
 
-    ui->checkBox_defaultSize->setChecked(true);
+    ui->checkBox_customSize->setChecked(true);
 }
 
 PrintShowDialog::~PrintShowDialog()
@@ -47,7 +48,7 @@ void PrintShowDialog::on_pushButton_print_clicked()
     }
     //printer.setPaperSize(QSizeF(62, 29), QPrinter::Millimeter);
     // Use custom size when option is set
-    if (ui->checkBox_defaultSize->isChecked())
+    if (ui->checkBox_customSize->isChecked())
     {
         int customWidth{ ui->spinBox_customWidth->value() };
         int customHeight{ ui->spinBox_customHeight->value() };
@@ -97,12 +98,12 @@ void PrintShowDialog::on_pushButton_clicked()
     file.close();
 }
 
-void PrintShowDialog::on_checkBox_defaultSize_clicked()
+void PrintShowDialog::on_checkBox_customSize_clicked()
 {
 
 }
 
-void PrintShowDialog::on_checkBox_defaultSize_stateChanged(int state)
+void PrintShowDialog::on_checkBox_customSize_stateChanged(int state)
 {
     qDebug() << "CHanged \n";
     ui->spinBox_customWidth->setEnabled(state);

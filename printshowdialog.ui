@@ -20,7 +20,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QCheckBox" name="checkBox_defaultSize">
+      <widget class="QCheckBox" name="checkBox_customSize">
        <property name="text">
         <string>Change Size</string>
        </property>

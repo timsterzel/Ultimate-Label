@@ -9,6 +9,7 @@ ProfilesDialog::ProfilesDialog(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle(tr("Profiles"));
+    setWindowIcon(QIcon(":/logo.png"));
     setOptionsEnabled(false);
 
     // Load profiles

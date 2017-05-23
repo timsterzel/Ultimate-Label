@@ -9,6 +9,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 {
     ui->setupUi(this);    
     setWindowTitle(tr("Settings"));
+    setWindowIcon(QIcon(":/logo.png"));
     QString profilesStartPath{ m_settings.value(Settings::SETTINGS_FILE_START_PATH, "").toString() };
     int customWidth{ m_settings.value(Settings::SETTINGS_CUSTOM_WIDTH, "0").toInt() };
     int customHeight{ m_settings.value(Settings::SETTINGS_CUSTOM_HEIGHT, "0").toInt() };

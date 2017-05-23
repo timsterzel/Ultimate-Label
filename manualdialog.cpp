@@ -7,6 +7,7 @@ ManualDialog::ManualDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle(tr("Manual"));
+    setWindowIcon(QIcon(":/logo.png"));
     // Load manual from resource
     ui->textBrowser_manual->setSource(QUrl("qrc:/manual.html"));
 

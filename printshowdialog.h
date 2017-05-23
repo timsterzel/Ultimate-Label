@@ -22,9 +22,9 @@ private slots:
 
     void on_pushButton_clicked();
 
-    void on_checkBox_defaultSize_clicked();
+    void on_checkBox_customSize_clicked();
 
-    void on_checkBox_defaultSize_stateChanged(int arg1);
+    void on_checkBox_customSize_stateChanged(int arg1);
 
 private:
     Ui::PrintShowDialog *ui;
