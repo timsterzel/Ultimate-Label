@@ -47,55 +47,75 @@
         <translation>Hauptfenster</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="42"/>
+        <location filename="mainwindow.ui" line="25"/>
+        <source>CSV</source>
+        <translation>CSV</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="38"/>
+        <source>Label</source>
+        <translation>Label</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="46"/>
+        <source>Font Size:</source>
+        <translation>Schriftgröße</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="93"/>
         <source>Print</source>
         <translation>Drucken</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="61"/>
+        <location filename="mainwindow.ui" line="112"/>
         <source>File</source>
         <translation>Datei</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="68"/>
+        <location filename="mainwindow.ui" line="119"/>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="75"/>
+        <location filename="mainwindow.ui" line="126"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="88"/>
-        <location filename="mainwindow.cpp" line="50"/>
-        <location filename="mainwindow.cpp" line="55"/>
+        <location filename="mainwindow.ui" line="139"/>
+        <source>toolBar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="150"/>
+        <location filename="mainwindow.cpp" line="51"/>
+        <location filename="mainwindow.cpp" line="56"/>
         <source>Open</source>
         <translation>Öffnen</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="93"/>
+        <location filename="mainwindow.ui" line="155"/>
         <source>Profiles</source>
         <translation>Profile</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="98"/>
+        <location filename="mainwindow.ui" line="160"/>
         <source>Clear</source>
         <translation>Leeren</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="103"/>
+        <location filename="mainwindow.ui" line="165"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="108"/>
-        <location filename="mainwindow.ui" line="118"/>
+        <location filename="mainwindow.ui" line="170"/>
+        <location filename="mainwindow.ui" line="180"/>
         <source>Manual</source>
         <translation>Handbuch</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="113"/>
+        <location filename="mainwindow.ui" line="175"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
@@ -127,37 +147,48 @@
     </message>
     <message>
         <location filename="printshowdialog.ui" line="25"/>
+        <source>Custom Size</source>
+        <oldsource>Change Size</oldsource>
+        <translation type="unfinished">Andere Größe</translation>
+    </message>
+    <message>
+        <location filename="printshowdialog.ui" line="48"/>
+        <source>x</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printshowdialog.ui" line="62"/>
         <source>Save</source>
         <translation>Speichern</translation>
     </message>
     <message>
-        <location filename="printshowdialog.ui" line="32"/>
-        <location filename="printshowdialog.cpp" line="15"/>
+        <location filename="printshowdialog.ui" line="69"/>
+        <location filename="printshowdialog.cpp" line="17"/>
         <source>Print</source>
         <translation>Drucken</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="34"/>
+        <location filename="printshowdialog.cpp" line="46"/>
         <source>Error by opening printer</source>
         <translation>Fehler beim öffnen des Druckers</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="34"/>
+        <location filename="printshowdialog.cpp" line="46"/>
         <source>Cannot print file</source>
         <translation>Dokument kann nicht gedruckt werden</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="69"/>
+        <location filename="printshowdialog.cpp" line="88"/>
         <source>Save to</source>
         <translation>Speichern unter</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="74"/>
+        <location filename="printshowdialog.cpp" line="93"/>
         <source>Error by saving file</source>
         <translation>Fehler beim speichern des Dokuments</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="74"/>
+        <location filename="printshowdialog.cpp" line="93"/>
         <source>Cannot save file</source>
         <translation>Dokument kann nicht gespeichert werden</translation>
     </message>
@@ -242,6 +273,11 @@
         <source>File open path (Default start path when opening a file)</source>
         <oldsource>File open path (Defualt start path when opening a file)</oldsource>
         <translation>Standart Pfad für das öffnen von Dateien</translation>
+    </message>
+    <message>
+        <location filename="settingsdialog.ui" line="33"/>
+        <source>Custom Size defaults (width, height)</source>
+        <translation>Größe ändern vorlage(Breite, Höhe)</translation>
     </message>
     <message>
         <location filename="settingsdialog.cpp" line="11"/>

@@ -45,6 +45,8 @@ private slots:
 
     void on_actionAbout_triggered();
 
+    void on_spinBox_fontSize_valueChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
 

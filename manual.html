@@ -1,3 +1,33 @@
 <html>
 	<h1>Manual</h1>
+	<!-- Functionality -->
+	<h2>Functionality</h2>
+	<p>This application lets you print simple labels or let you create labels of csv files with profiles.</p>
+	<h2>-Print simple labels</h2>
+	<p>Go to tab "Label" and enter the text you want print later. To print press the "print" button. A print dialog is opening now.</p>
+	<h2>-Print from csv files</h2>
+	<p>First you have to open a csv file under File->Open. Now the content of the csv file is loaded into the application and show the data in a table. You can now choose one of your definded profiles from a combo box and press "print" to print the data with the settings of the profile.</p>
+	<h2>-The print dialog</h2>
+	<p>When clicking on the print button a applications print dialog open. Here you the a preview of the data which get printed when pressing Print button instead of printing you can save the content as html file by clicking the save button.
+		When you want to ignore the printer size configurated in your printers driver you can check the "Change Size" checkbox and define a custom width and height.</p>
+	<!-- Profiles -->
+	<h2>Profiles</h2>
+	<p>Here you can create settings for specific use cases.</p>
+	<h3>-Name</h3>
+	<p>The name of the template</p>
+	<h3>-Seperator</h3>
+	<p>The seperator which is used in the csv file to seperate data.</p>
+	<h3>-Codec</h3>
+	<p>The codec which is used to encode the csv file. Should be the same as the codec used in the csv file.</p>
+	<h3>-Contains header</h3>
+	<p>If the csv file use a header you should check this box, so the first row is not interpreted as data.</p>
+	<h3>-Template</h3>
+	<p>Here you can create a layout in html for your label. You can find supported html and css properties under: <a href>http://doc.qt.io/qt-5.8/richtext-html-subset.html</a>.
+	Also you can set placeholders which has the form $(i) where i is the column of your csv file. The first column has the number 1.</p>
+	<!-- Settings -->
+	<h2>Settings</h2>
+	<h3>-File open path</h3>
+	<p>The default start path when opening a file</p>
+	<h3>-Custom Size defaults</h3>
+	<p>The default with and size when selecting "Custom Size" in applications print dialog</p>
 </html>

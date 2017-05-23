@@ -27,10 +27,11 @@ MainWindow::MainWindow(QWidget *parent)
     // Select only one row and when the whole one
     ui->tableWidget_data->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget_data->setSelectionMode(QAbstractItemView::SingleSelection);
-
     ui->tableWidget_data->hide();
-    //ui->comboBox_profiles->hide();
-    //ui->pushButton_print->hide();
+
+    ui->spinBox_fontSize->setValue(12);
+    ui->textEdit_label->setFontPointSize(12);
+
     loadProfiles();
 }
 
@@ -235,4 +236,16 @@ void MainWindow::on_actionAbout_triggered()
         m_aboutDialog->setModal(false);
     }
     m_aboutDialog->show();
+}
+
+void MainWindow::on_spinBox_fontSize_valueChanged(int arg1)
+{
+    // To change the font size for the complete text inside the textEdit we
+    // first backup the actual seleted part and the select all and set the
+    // new font size to the whole selection. Then we restore the previous
+    // selection.
+    QTextCursor cursor{ ui->textEdit_label->textCursor() };
+    ui->textEdit_label->selectAll();
+    ui->textEdit_label->setFontPointSize(arg1);
+    ui->textEdit_label->setTextCursor(cursor);
 }
