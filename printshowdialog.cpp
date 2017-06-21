@@ -7,6 +7,7 @@
 #include <QPainter>
 #include <QPrinter>
 #include <QPrintDialog>
+#include "printmanager.h"
 
 PrintShowDialog::PrintShowDialog(QWidget *parent, QString dataToShow)
     : QDialog(parent)
@@ -16,6 +17,10 @@ PrintShowDialog::PrintShowDialog(QWidget *parent, QString dataToShow)
     ui->setupUi(this);
     setWindowTitle(tr("Print"));
     setWindowIcon(QIcon(":/logo.png"));
+
+    ui->spinBox_fontSize->setValue(12);
+    ui->textEditHtml->setFontPointSize(12);
+
     ui->textEditHtml->insertHtml(dataToShow);
     ui->spinBox_customWidth->setEnabled(false);
     ui->spinBox_customHeight->setEnabled(false);
@@ -35,52 +40,21 @@ PrintShowDialog::~PrintShowDialog()
 
 void PrintShowDialog::on_pushButton_print_clicked()
 {
-    // Let user select printer and set options
-    QPrinter printer;
-    QPrintDialog dialog{ &printer, this };
-    dialog.setWindowTitle("Print Document");
-    dialog.addEnabledOption(QAbstractPrintDialog::PrintSelection);
-    if (dialog.exec() != QDialog::Accepted)
-    {
-        qDebug() << "Error by opening Printer dialog\n";
-        QMessageBox::information(this, tr("Error by opening printer"), tr("Cannot print file"));
-        return;
-    }
-    //printer.setPaperSize(QSizeF(62, 29), QPrinter::Millimeter);
-    // Use custom size when option is set
+    QTextDocument *doc{ ui->textEditHtml->document() };
+    bool customSize{ false };
+    int customWidth{ 0 };
+    int customHeight{ 0 };
     if (ui->checkBox_customSize->isChecked())
     {
-        int customWidth{ ui->spinBox_customWidth->value() };
-        int customHeight{ ui->spinBox_customHeight->value() };
-        printer.setPaperSize(QSizeF(customWidth, customHeight), QPrinter::Millimeter);
+        customSize = true;
+        customWidth = ui->spinBox_customWidth->value();
+        customHeight = ui->spinBox_customHeight->value();
     }
-    QTextDocument *doc{ ui->textEditHtml->document() };
-    // Scale painter so the documents content fits perfect
-    double scaleX{ printer.pageRect().width() / (double) (doc->size().width()) };
-    double scaleY{ printer.pageRect().height() / (double) (doc->size().height()) };
-    double scale{ qMin(scaleX, scaleY) };
-    QPainter painter;
-    painter.begin(&printer);
-    painter.scale(scale, scale);
-    // Print
-    doc->drawContents(&painter);
 
-    //ui->textEditHtml->print(&printer);
-
-    /*
-    QPrinter printer2(QPrinter::HighResolution);
-    printer2.setPaperSize(QSizeF(62, 29), QPrinter::Millimeter);
-    printer2.fullPage();
-    printer2.setOutputFormat(QPrinter::PdfFormat);
-    printer2.setOutputFileName("output.pdf");
-    */
-
-    /*
-    QPainter painter;
-    painter.begin(&printer);
-    ui->textEditHtml->render(&painter);
-    */
-
+    if (!PrintManager::print(this, tr("Print Document"), doc, customSize, customWidth, customHeight))
+    {
+        QMessageBox::information(this, tr("Error by opening printer"), tr("Cannot print file"));
+    }
 }
 
 void PrintShowDialog::on_pushButton_clicked()
@@ -105,7 +79,46 @@ void PrintShowDialog::on_checkBox_customSize_clicked()
 
 void PrintShowDialog::on_checkBox_customSize_stateChanged(int state)
 {
-    qDebug() << "CHanged \n";
     ui->spinBox_customWidth->setEnabled(state);
     ui->spinBox_customHeight->setEnabled(state);
+}
+
+void PrintShowDialog::on_spinBox_fontSize_valueChanged(int arg1)
+{
+    // To change the font size for the complete text inside the textEdit we
+    // first backup the actual seleted part and the select all and set the
+    // new font size to the whole selection. Then we restore the previous
+    // selection.
+    QTextCursor cursor{ ui->textEditHtml->textCursor() };
+    ui->textEditHtml->selectAll();
+    ui->textEditHtml->setFontPointSize(arg1);
+    ui->textEditHtml->setTextCursor(cursor);
+}
+
+void PrintShowDialog::on_pushButton_fontUnserline_clicked()
+{
+    bool isUnderlined{ ui->textEditHtml->fontUnderline() };
+    QTextCursor cursor{ ui->textEditHtml->textCursor() };
+    ui->textEditHtml->selectAll();
+    ui->textEditHtml->setFontUnderline(!isUnderlined);
+    ui->textEditHtml->setTextCursor(cursor);
+}
+
+void PrintShowDialog::on_pushButton_fontBold_clicked()
+{
+    bool isBold{ ui->textEditHtml->fontWeight() == QFont::Weight::Bold };
+    QTextCursor cursor{ ui->textEditHtml->textCursor() };
+    ui->textEditHtml->selectAll();
+    ui->textEditHtml->setFontWeight(isBold ? QFont::Weight::Normal : QFont::Weight::Bold);
+    ui->textEditHtml->setTextCursor(cursor);
+}
+
+void PrintShowDialog::on_pushButton_fontItalic_clicked()
+{
+    bool isItalic{ ui->textEditHtml->fontItalic() };
+    QTextCursor cursor{ ui->textEditHtml->textCursor() };
+    ui->textEditHtml->selectAll();
+    ui->textEditHtml->setFontItalic(!isItalic);
+    ui->textEditHtml->setTextCursor(cursor);
+
 }

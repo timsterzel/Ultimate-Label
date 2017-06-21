@@ -33,43 +33,6 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_text">
-       <attribute name="title">
-        <string>Label</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QLabel" name="label_fontSize">
-            <property name="text">
-             <string>Font Size:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="spinBox_fontSize"/>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QTextEdit" name="textEdit_label"/>
-        </item>
-       </layout>
-      </widget>
      </widget>
     </item>
     <item>
@@ -88,9 +51,16 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_print">
+       <widget class="QPushButton" name="pushButton_printLabel">
         <property name="text">
-         <string>Print</string>
+         <string>Print Label</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_printSelection">
+        <property name="text">
+         <string>Print Selection</string>
         </property>
        </widget>
       </item>

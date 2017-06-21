@@ -26,6 +26,14 @@ private slots:
 
     void on_checkBox_customSize_stateChanged(int arg1);
 
+    void on_spinBox_fontSize_valueChanged(int arg1);
+
+    void on_pushButton_fontUnserline_clicked();
+
+    void on_pushButton_fontBold_clicked();
+
+    void on_pushButton_fontItalic_clicked();
+
 private:
     Ui::PrintShowDialog *ui;
 };

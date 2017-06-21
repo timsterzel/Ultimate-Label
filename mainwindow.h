@@ -34,7 +34,7 @@ private slots:
 
     void on_actionClear_triggered();
 
-    void on_pushButton_print_clicked();
+    void on_pushButton_printSelection_clicked();
 
     // Own Slot, called when a item of the horizontal header was clicked
     void on_tableHorizontalHeaderClicked(int index);
@@ -45,7 +45,7 @@ private slots:
 
     void on_actionAbout_triggered();
 
-    void on_spinBox_fontSize_valueChanged(int arg1);
+    void on_pushButton_printLabel_clicked();
 
 private:
     Ui::MainWindow *ui;

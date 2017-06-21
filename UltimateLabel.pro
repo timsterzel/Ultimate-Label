@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     printshowdialog.cpp \
     settingsdialog.cpp \
     manualdialog.cpp \
-    aboutdialog.cpp
+    aboutdialog.cpp \
+    printmanager.cpp
 
 HEADERS  += mainwindow.h \
     profilesdialog.h \
@@ -31,7 +32,8 @@ HEADERS  += mainwindow.h \
     settingsdialog.h \
     settings.h \
     manualdialog.h \
-    aboutdialog.h
+    aboutdialog.h \
+    printmanager.h
 
 FORMS    += mainwindow.ui \
     profilesdialog.ui \

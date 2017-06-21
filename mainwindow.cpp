@@ -29,9 +29,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tableWidget_data->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableWidget_data->hide();
 
-    ui->spinBox_fontSize->setValue(12);
-    ui->textEdit_label->setFontPointSize(12);
-
     loadProfiles();
 }
 
@@ -138,7 +135,7 @@ void MainWindow::loadCSVFile(QString fileName)
     // Show needed widget with loaded data
     ui->tableWidget_data->show();
     ui->comboBox_profiles->show();
-    ui->pushButton_print->show();
+    ui->pushButton_printSelection->show();
     // Call slot when the horizontal header was clicked
     connect(ui->tableWidget_data->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(on_tableHorizontalHeaderClicked(int)));
 }
@@ -160,48 +157,45 @@ void MainWindow::on_actionClear_triggered()
 
     // Hide widgets which are not needed without loaded data
     ui->tableWidget_data->hide();
-    ui->pushButton_print->hide();
+    ui->pushButton_printSelection->hide();
 }
 
-void MainWindow::on_pushButton_print_clicked()
+void MainWindow::on_pushButton_printSelection_clicked()
 {
     // Print csv data
-    if (ui->tabWidget->currentIndex() == 0)
+    // Only print when there is a row selected and a profile is selected
+    if (ui->tableWidget_data->selectedItems().size() < 1)
     {
-        // Only print when there is a row selected and a profile is selected
-        if (ui->tableWidget_data->selectedItems().size() < 1)
-        {
-            QMessageBox::information(this, "Nope", "Please select a row to print");
-            return;
-        }
-        if (ui->comboBox_profiles->count() < 1)
-        {
-            QMessageBox::information(this, "Nope", "Please select a profile for printing");
-            return;
-        }
-        QString key{ ui->comboBox_profiles->currentText() };
+        QMessageBox::information(this, "Nope", "Please select a row to print");
+        return;
+    }
+    if (ui->comboBox_profiles->count() < 1)
+    {
+        QMessageBox::information(this, "Nope", "Please select a profile for printing");
+        return;
+    }
+    QString key{ ui->comboBox_profiles->currentText() };
 
-        QString tempText{ m_profiles[key].getTemplateText() };
-        // Replace placeholders which column data
-        for (int i{ 0 }; i < ui->tableWidget_data->columnCount(); i++)
-        {
-            QString data{ ui->tableWidget_data->selectedItems().at(i)->text() };
-            // Placeholder has the form $(column)
-            tempText.replace("$(" + QString::number(i + 1) + ")", data);
-        }
-        // Show dialog which show the data for printing
-        PrintShowDialog dialog{ nullptr, tempText };
-        dialog.setModal(true);
-        dialog.exec();
-    }
-    // Print data of text edit in label tab
-    else if (ui->tabWidget->currentIndex() == 1)
+    QString tempText{ m_profiles[key].getTemplateText() };
+    // Replace placeholders which column data
+    for (int i{ 0 }; i < ui->tableWidget_data->columnCount(); i++)
     {
-        QString printText{ ui->textEdit_label->toHtml() };
-        PrintShowDialog dialog{ nullptr, printText };
-        dialog.setModal(true);
-        dialog.exec();
+        QString data{ ui->tableWidget_data->selectedItems().at(i)->text() };
+        // Placeholder has the form $(column)
+        tempText.replace("$(" + QString::number(i + 1) + ")", data);
     }
+    // Show dialog which show the data for printing
+    PrintShowDialog dialog{ nullptr, tempText };
+    dialog.setModal(true);
+    dialog.exec();
+}
+
+void MainWindow::on_pushButton_printLabel_clicked()
+{
+    // Open dialog for printing labels
+    PrintShowDialog dialog{ nullptr };
+    dialog.setModal(true);
+    dialog.exec();
 }
 
 void MainWindow::on_tableHorizontalHeaderClicked(int index)
@@ -236,16 +230,4 @@ void MainWindow::on_actionAbout_triggered()
         m_aboutDialog->setModal(false);
     }
     m_aboutDialog->show();
-}
-
-void MainWindow::on_spinBox_fontSize_valueChanged(int arg1)
-{
-    // To change the font size for the complete text inside the textEdit we
-    // first backup the actual seleted part and the select all and set the
-    // new font size to the whole selection. Then we restore the previous
-    // selection.
-    QTextCursor cursor{ ui->textEdit_label->textCursor() };
-    ui->textEdit_label->selectAll();
-    ui->textEdit_label->setFontPointSize(arg1);
-    ui->textEdit_label->setTextCursor(cursor);
 }
