@@ -52,70 +52,77 @@
         <translation>CSV</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="38"/>
         <source>Label</source>
-        <translation>Label</translation>
+        <translation type="vanished">Label</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="46"/>
         <source>Font Size:</source>
-        <translation>Schriftgröße</translation>
+        <translation type="vanished">Schriftgröße</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="93"/>
         <source>Print</source>
-        <translation>Drucken</translation>
+        <translation type="vanished">Drucken</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="112"/>
+        <location filename="mainwindow.ui" line="56"/>
+        <source>Print Label</source>
+        <translation type="finished">Label drucken</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="63"/>
+        <source>Print Selection</source>
+        <translation type="finished">CSV drucken</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="82"/>
         <source>File</source>
         <translation>Datei</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="119"/>
+        <location filename="mainwindow.ui" line="89"/>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="126"/>
+        <location filename="mainwindow.ui" line="96"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="139"/>
+        <location filename="mainwindow.ui" line="109"/>
         <source>toolBar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="150"/>
-        <location filename="mainwindow.cpp" line="51"/>
-        <location filename="mainwindow.cpp" line="56"/>
+        <location filename="mainwindow.ui" line="120"/>
+        <location filename="mainwindow.cpp" line="48"/>
+        <location filename="mainwindow.cpp" line="53"/>
         <source>Open</source>
         <translation>Öffnen</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="155"/>
+        <location filename="mainwindow.ui" line="125"/>
         <source>Profiles</source>
         <translation>Profile</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="160"/>
+        <location filename="mainwindow.ui" line="130"/>
         <source>Clear</source>
         <translation>Leeren</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="165"/>
+        <location filename="mainwindow.ui" line="135"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="170"/>
-        <location filename="mainwindow.ui" line="180"/>
+        <location filename="mainwindow.ui" line="140"/>
+        <location filename="mainwindow.ui" line="150"/>
         <source>Manual</source>
         <translation>Handbuch</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="175"/>
+        <location filename="mainwindow.ui" line="145"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
@@ -146,49 +153,66 @@
         <translation>Dialog</translation>
     </message>
     <message>
-        <location filename="printshowdialog.ui" line="25"/>
-        <source>Custom Size</source>
-        <oldsource>Change Size</oldsource>
-        <translation type="unfinished">Andere Größe</translation>
+        <location filename="printshowdialog.ui" line="22"/>
+        <source>Font Size</source>
+        <translation type="finished">Schriftgröße</translation>
     </message>
     <message>
-        <location filename="printshowdialog.ui" line="48"/>
+        <location filename="printshowdialog.ui" line="41"/>
+        <location filename="printshowdialog.ui" line="57"/>
+        <location filename="printshowdialog.ui" line="73"/>
+        <source>a</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printshowdialog.ui" line="100"/>
+        <source>Custom Size</source>
+        <oldsource>Change Size</oldsource>
+        <translation type="finished">Andere Größe</translation>
+    </message>
+    <message>
+        <location filename="printshowdialog.ui" line="123"/>
         <source>x</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="printshowdialog.ui" line="62"/>
+        <location filename="printshowdialog.ui" line="137"/>
         <source>Save</source>
         <translation>Speichern</translation>
     </message>
     <message>
-        <location filename="printshowdialog.ui" line="69"/>
-        <location filename="printshowdialog.cpp" line="17"/>
+        <location filename="printshowdialog.ui" line="144"/>
+        <location filename="printshowdialog.cpp" line="18"/>
         <source>Print</source>
         <translation>Drucken</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="46"/>
+        <location filename="printshowdialog.cpp" line="54"/>
+        <source>Print Document</source>
+        <translation type="finished">Dokument drucken</translation>
+    </message>
+    <message>
+        <location filename="printshowdialog.cpp" line="56"/>
         <source>Error by opening printer</source>
         <translation>Fehler beim öffnen des Druckers</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="46"/>
+        <location filename="printshowdialog.cpp" line="56"/>
         <source>Cannot print file</source>
         <translation>Dokument kann nicht gedruckt werden</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="88"/>
+        <location filename="printshowdialog.cpp" line="62"/>
         <source>Save to</source>
         <translation>Speichern unter</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="93"/>
+        <location filename="printshowdialog.cpp" line="67"/>
         <source>Error by saving file</source>
         <translation>Fehler beim speichern des Dokuments</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="93"/>
+        <location filename="printshowdialog.cpp" line="67"/>
         <source>Cannot save file</source>
         <translation>Dokument kann nicht gespeichert werden</translation>
     </message>
