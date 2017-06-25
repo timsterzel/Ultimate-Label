@@ -97,13 +97,6 @@ void PrintShowDialog::on_spinBox_fontSize_valueChanged(int arg1)
 
 void PrintShowDialog::on_pushButton_fontUnserline_clicked()
 {
-    /*
-    bool isUnderlined{ ui->textEditHtml->fontUnderline() };
-    QTextCursor cursor{ ui->textEditHtml->textCursor() };
-    ui->textEditHtml->selectAll();
-    ui->textEditHtml->setFontUnderline(!isUnderlined);
-    ui->textEditHtml->setTextCursor(cursor);
-    */
     QTextEdit *textEdit{ ui->textEditHtml };
     QTextCursor cursor{ textEdit->textCursor() };
     // setFontUnderline
@@ -146,10 +139,22 @@ void PrintShowDialog::on_pushButton_fontBold_clicked()
 
 void PrintShowDialog::on_pushButton_fontItalic_clicked()
 {
-    bool isItalic{ ui->textEditHtml->fontItalic() };
-    QTextCursor cursor{ ui->textEditHtml->textCursor() };
-    ui->textEditHtml->selectAll();
-    ui->textEditHtml->setFontItalic(!isItalic);
-    ui->textEditHtml->setTextCursor(cursor);
+    QTextEdit *textEdit{ ui->textEditHtml };
+    QTextCursor cursor{ textEdit->textCursor() };
+    // setFontUnderline
+    if (cursor.hasSelection())
+    {
+        // Make selection italic / not italic
+        bool isItalic{ cursor.charFormat().fontItalic() };
+        QTextCharFormat format;
+        format.setFontItalic(!isItalic);
+        cursor.mergeCharFormat(format);
+    }
+    else
+    {
+        // Make new text italic / not italic
+        bool isItalic{ textEdit->fontItalic() };
+        textEdit->setFontItalic(!isItalic);
+    }
 
 }
