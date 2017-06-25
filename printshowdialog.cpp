@@ -100,6 +100,7 @@ void PrintShowDialog::on_spinBox_fontSize_valueChanged(int arg1)
         // Make new text to new font size
         textEdit->setFontPointSize(arg1);
     }
+    textEdit->setFocus();
 }
 
 void PrintShowDialog::on_pushButton_fontUnserline_clicked()
@@ -124,6 +125,7 @@ void PrintShowDialog::on_pushButton_fontUnserline_clicked()
     }
     QPushButton *btn{ ui->pushButton_fontUnserline };
     changeBtnActiveColor(btn, !isUnderlined);
+    textEdit->setFocus();
 }
 
 void PrintShowDialog::on_pushButton_fontBold_clicked()
@@ -147,6 +149,7 @@ void PrintShowDialog::on_pushButton_fontBold_clicked()
     }
     QPushButton *btn{ ui->pushButton_fontBold };
     changeBtnActiveColor(btn, !isBold);
+    textEdit->setFocus();
 }
 
 void PrintShowDialog::on_pushButton_fontItalic_clicked()
@@ -171,6 +174,7 @@ void PrintShowDialog::on_pushButton_fontItalic_clicked()
     }
     QPushButton *btn{ ui->pushButton_fontItalic };
     changeBtnActiveColor(btn, !isItalic);
+    textEdit->setFocus();
 }
 
 void PrintShowDialog::on_textEditHtml_selectionChanged()
