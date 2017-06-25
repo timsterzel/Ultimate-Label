@@ -40,7 +40,7 @@ private slots:
 
     void changeBtnActiveColor(QPushButton *button, bool isActive);
 
-    void changeSpinBoxValueWithoutTriggeringSignal(QSpinBox *spinBox, int value);
+    //void changeSpinBoxValueWithoutTriggeringSignal(QSpinBox *spinBox, int value);
 
 private:
     Ui::PrintShowDialog *ui;

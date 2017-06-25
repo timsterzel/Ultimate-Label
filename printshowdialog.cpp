@@ -18,6 +18,7 @@ PrintShowDialog::PrintShowDialog(QWidget *parent, QString dataToShow)
     setWindowTitle(tr("Print"));
     setWindowIcon(QIcon(":/logo.png"));
 
+    ui->spinBox_fontSize->setMinimum(1);
     ui->spinBox_fontSize->setValue(12);
     ui->textEditHtml->setFontPointSize(12);
 
@@ -176,38 +177,26 @@ void PrintShowDialog::on_textEditHtml_selectionChanged()
 {
     QTextEdit *textEdit{ ui->textEditHtml };
     QTextCursor cursor{ textEdit->textCursor() };
-    QString btnStyleActive{ "background-color: green" };
-    QString btnStyleInActive{ "background-color: none" };
-    //btn->setStyleSheet("background-color: green");
-    int fontSize{ 1 };
     bool isBtnUnderlineActive{ false };
     bool isBtnBoldActive{ false };
     bool isBtnItalicActive{ false };
 
     if (cursor.hasSelection())
     {
-        fontSize = cursor.charFormat().fontPointSize();
-        qDebug() << "Font Size: " << cursor.charFormat().fontPointSize() << "\n";
-        ui->spinBox_fontSize->blockSignals(true);
-        ui->spinBox_fontSize->setValue(cursor.charFormat().fontPointSize());
-        ui->spinBox_fontSize->blockSignals(false);
-
         isBtnUnderlineActive = cursor.charFormat().fontUnderline();
         isBtnBoldActive = cursor.charFormat().fontWeight() == QFont::Weight::Bold;
         isBtnItalicActive = cursor.charFormat().fontItalic();
     }
     else
     {
-        fontSize = textEdit->fontPointSize();
         isBtnUnderlineActive = textEdit->fontUnderline();
         isBtnBoldActive = textEdit->fontWeight() == QFont::Weight::Bold;
         isBtnItalicActive = textEdit->fontItalic();
     }
-    QSpinBox *spinBoxFontValue{ ui->spinBox_fontSize };
     QPushButton *btnUnderline{ ui->pushButton_fontUnserline };
     QPushButton *btnBold{ ui->pushButton_fontBold };
     QPushButton *btnItalic{ ui->pushButton_fontItalic };
-    changeSpinBoxValueWithoutTriggeringSignal(spinBoxFontValue, fontSize);
+
     changeBtnActiveColor(btnUnderline, isBtnUnderlineActive);
     changeBtnActiveColor(btnBold, isBtnBoldActive);
     changeBtnActiveColor(btnItalic, isBtnItalicActive);
@@ -228,10 +217,11 @@ void PrintShowDialog::changeBtnActiveColor(QPushButton *button, bool isActive)
     }
     button->setPalette(pal);
 }
-
+/*
 void PrintShowDialog::changeSpinBoxValueWithoutTriggeringSignal(QSpinBox *spinBox, int value)
 {
     bool oldState{ spinBox->blockSignals(true) };
     spinBox->setValue(value);
     spinBox->blockSignals(oldState);
 }
+*/
