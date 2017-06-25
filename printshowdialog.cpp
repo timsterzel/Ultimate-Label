@@ -85,14 +85,20 @@ void PrintShowDialog::on_checkBox_customSize_stateChanged(int state)
 
 void PrintShowDialog::on_spinBox_fontSize_valueChanged(int arg1)
 {
-    // To change the font size for the complete text inside the textEdit we
-    // first backup the actual seleted part and the select all and set the
-    // new font size to the whole selection. Then we restore the previous
-    // selection.
-    QTextCursor cursor{ ui->textEditHtml->textCursor() };
-    ui->textEditHtml->selectAll();
-    ui->textEditHtml->setFontPointSize(arg1);
-    ui->textEditHtml->setTextCursor(cursor);
+    QTextEdit *textEdit{ ui->textEditHtml };
+    QTextCursor cursor{ textEdit->textCursor() };
+    if (cursor.hasSelection())
+    {
+        // Set selection to new font size
+        QTextCharFormat format;
+        format.setFontPointSize(arg1);
+        cursor.mergeCharFormat(format);
+    }
+    else
+    {
+        // Make new text to new font size
+        textEdit->setFontPointSize(arg1);
+    }
 }
 
 void PrintShowDialog::on_pushButton_fontUnserline_clicked()
@@ -114,7 +120,6 @@ void PrintShowDialog::on_pushButton_fontUnserline_clicked()
         bool isUnderlined{ textEdit->fontUnderline() };
         textEdit->setFontUnderline(!isUnderlined);
     }
-
 }
 
 void PrintShowDialog::on_pushButton_fontBold_clicked()
@@ -156,5 +161,4 @@ void PrintShowDialog::on_pushButton_fontItalic_clicked()
         bool isItalic{ textEdit->fontItalic() };
         textEdit->setFontItalic(!isItalic);
     }
-
 }
