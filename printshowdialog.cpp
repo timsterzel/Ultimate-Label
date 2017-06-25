@@ -105,11 +105,12 @@ void PrintShowDialog::on_pushButton_fontUnserline_clicked()
 {
     QTextEdit *textEdit{ ui->textEditHtml };
     QTextCursor cursor{ textEdit->textCursor() };
+    bool isUnderlined{ false };
     // setFontUnderline
     if (cursor.hasSelection())
     {
         // Make selection underlined / not underlined
-        bool isUnderlined{ cursor.charFormat().fontUnderline() };
+        isUnderlined = cursor.charFormat().fontUnderline();
         QTextCharFormat format;
         format.setFontUnderline(!isUnderlined);
         cursor.mergeCharFormat(format);
@@ -117,19 +118,22 @@ void PrintShowDialog::on_pushButton_fontUnserline_clicked()
     else
     {
         // Make new text underlined / not underlined
-        bool isUnderlined{ textEdit->fontUnderline() };
+        isUnderlined = textEdit->fontUnderline();
         textEdit->setFontUnderline(!isUnderlined);
     }
+    QPushButton *btn{ ui->pushButton_fontUnserline };
+    changeBtnActiveColor(btn, !isUnderlined);
 }
 
 void PrintShowDialog::on_pushButton_fontBold_clicked()
 {
     QTextEdit *textEdit{ ui->textEditHtml };
     QTextCursor cursor{ textEdit->textCursor() };
+    bool isBold{ false };
     if (cursor.hasSelection())
     {
         // Make selection bold or unbold
-        bool isBold{ cursor.charFormat().fontWeight() == QFont::Weight::Bold };
+        isBold = cursor.charFormat().fontWeight() == QFont::Weight::Bold;
         QTextCharFormat format;
         format.setFontWeight(isBold ? QFont::Weight::Normal : QFont::Weight::Bold);
         cursor.mergeCharFormat(format);
@@ -137,20 +141,23 @@ void PrintShowDialog::on_pushButton_fontBold_clicked()
     else
     {
         // Make new text bold / not bold
-        bool isBold{ textEdit->fontWeight() == QFont::Weight::Bold };
+        isBold = textEdit->fontWeight() == QFont::Weight::Bold;
         textEdit->setFontWeight(isBold ? QFont::Weight::Normal : QFont::Weight::Bold);
     }
+    QPushButton *btn{ ui->pushButton_fontBold };
+    changeBtnActiveColor(btn, !isBold);
 }
 
 void PrintShowDialog::on_pushButton_fontItalic_clicked()
 {
     QTextEdit *textEdit{ ui->textEditHtml };
     QTextCursor cursor{ textEdit->textCursor() };
+    bool isItalic{ false };
     // setFontUnderline
     if (cursor.hasSelection())
     {
         // Make selection italic / not italic
-        bool isItalic{ cursor.charFormat().fontItalic() };
+        isItalic = cursor.charFormat().fontItalic();
         QTextCharFormat format;
         format.setFontItalic(!isItalic);
         cursor.mergeCharFormat(format);
@@ -158,7 +165,58 @@ void PrintShowDialog::on_pushButton_fontItalic_clicked()
     else
     {
         // Make new text italic / not italic
-        bool isItalic{ textEdit->fontItalic() };
+        isItalic = textEdit->fontItalic();
         textEdit->setFontItalic(!isItalic);
     }
+    QPushButton *btn{ ui->pushButton_fontItalic };
+    changeBtnActiveColor(btn, !isItalic);
+}
+
+void PrintShowDialog::on_textEditHtml_selectionChanged()
+{
+    QTextEdit *textEdit{ ui->textEditHtml };
+    QTextCursor cursor{ textEdit->textCursor() };
+    QString btnStyleActive{ "background-color: green" };
+    QString btnStyleInActive{ "background-color: none" };
+    //btn->setStyleSheet("background-color: green");
+    bool isBtnUnderlineActive{ false };
+    bool isBtnBoldActive{ false };
+    bool isBtnItalicActive{ false };
+    if (cursor.hasSelection())
+    {
+        qDebug() << "Font Size: " << cursor.charFormat().fontPointSize() << "\n";
+
+        isBtnUnderlineActive = cursor.charFormat().fontUnderline();
+        isBtnBoldActive = cursor.charFormat().fontWeight() == QFont::Weight::Bold;
+        isBtnItalicActive = cursor.charFormat().fontItalic();
+    }
+    else
+    {
+        isBtnUnderlineActive = textEdit->fontUnderline();
+        isBtnBoldActive = textEdit->fontWeight() == QFont::Weight::Bold;
+        isBtnItalicActive = textEdit->fontItalic();
+    }
+
+    QPushButton *btnUnderline{ ui->pushButton_fontUnserline };
+    QPushButton *btnBold{ ui->pushButton_fontBold };
+    QPushButton *btnItalic{ ui->pushButton_fontItalic };
+    changeBtnActiveColor(btnUnderline, isBtnUnderlineActive);
+    changeBtnActiveColor(btnBold, isBtnBoldActive);
+    changeBtnActiveColor(btnItalic, isBtnItalicActive);
+}
+
+void PrintShowDialog::changeBtnActiveColor(QPushButton *button, bool isActive)
+{
+    QColor colorActive{ 0, 128, 0 };
+    QColor colorInActive{ Qt::white };
+    QPalette pal;
+    if (isActive)
+    {
+        pal.setColor(QPalette::Button, colorActive);
+    }
+    else
+    {
+        pal.setColor(QPalette::Button, colorInActive);
+    }
+    button->setPalette(pal);
 }

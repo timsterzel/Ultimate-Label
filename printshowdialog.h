@@ -34,6 +34,10 @@ private slots:
 
     void on_pushButton_fontItalic_clicked();
 
+    void on_textEditHtml_selectionChanged();
+
+    void changeBtnActiveColor(QPushButton *button, bool isActive);
+
 private:
     Ui::PrintShowDialog *ui;
 };
