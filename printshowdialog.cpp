@@ -97,30 +97,40 @@ void PrintShowDialog::on_spinBox_fontSize_valueChanged(int arg1)
 
 void PrintShowDialog::on_pushButton_fontUnserline_clicked()
 {
+    /*
     bool isUnderlined{ ui->textEditHtml->fontUnderline() };
     QTextCursor cursor{ ui->textEditHtml->textCursor() };
     ui->textEditHtml->selectAll();
     ui->textEditHtml->setFontUnderline(!isUnderlined);
     ui->textEditHtml->setTextCursor(cursor);
+    */
+    QTextEdit *textEdit{ ui->textEditHtml };
+    QTextCursor cursor{ textEdit->textCursor() };
+    // setFontUnderline
+    if (cursor.hasSelection())
+    {
+        // Make selection underlined / not underlined
+        bool isUnderlined{ cursor.charFormat().fontUnderline() };
+        QTextCharFormat format;
+        format.setFontUnderline(!isUnderlined);
+        cursor.mergeCharFormat(format);
+    }
+    else
+    {
+        // Make new text underlined / not underlined
+        bool isUnderlined{ textEdit->fontUnderline() };
+        textEdit->setFontUnderline(!isUnderlined);
+    }
+
 }
 
 void PrintShowDialog::on_pushButton_fontBold_clicked()
 {
-    /*
-    bool isBold{ ui->textEditHtml->fontWeight() == QFont::Weight::Bold };
-    QTextCursor cursor{ ui->textEditHtml->textCursor() };
-    ui->textEditHtml->selectAll();
-    ui->textEditHtml->setFontWeight(isBold ? QFont::Weight::Normal : QFont::Weight::Bold);
-    ui->textEditHtml->setTextCursor(cursor);
-    */
-    //bool isBold{ ui->textEditHtml->fontWeight() == QFont::Weight::Bold };
-    //QTextCursor cursor{ ui->textEditHtml->textCursor() };
-    //hasSelection()
     QTextEdit *textEdit{ ui->textEditHtml };
     QTextCursor cursor{ textEdit->textCursor() };
     if (cursor.hasSelection())
     {
-        // Make seelction bold or unbold
+        // Make selection bold or unbold
         bool isBold{ cursor.charFormat().fontWeight() == QFont::Weight::Bold };
         QTextCharFormat format;
         format.setFontWeight(isBold ? QFont::Weight::Normal : QFont::Weight::Bold);
