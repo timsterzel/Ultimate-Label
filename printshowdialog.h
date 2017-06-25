@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QSettings>
 
+class QSpinBox;
+
 namespace Ui {
 class PrintShowDialog;
 }
@@ -37,6 +39,8 @@ private slots:
     void on_textEditHtml_selectionChanged();
 
     void changeBtnActiveColor(QPushButton *button, bool isActive);
+
+    void changeSpinBoxValueWithoutTriggeringSignal(QSpinBox *spinBox, int value);
 
 private:
     Ui::PrintShowDialog *ui;
