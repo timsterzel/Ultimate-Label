@@ -42,6 +42,10 @@ private slots:
 
     //void changeSpinBoxValueWithoutTriggeringSignal(QSpinBox *spinBox, int value);
 
+    void on_textEditHtml_cursorPositionChanged();
+
+    void on_spinBox_fontSize_editingFinished();
+
 private:
     Ui::PrintShowDialog *ui;
 };

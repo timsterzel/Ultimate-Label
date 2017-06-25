@@ -86,6 +86,7 @@ void PrintShowDialog::on_checkBox_customSize_stateChanged(int state)
 
 void PrintShowDialog::on_spinBox_fontSize_valueChanged(int arg1)
 {
+    /*
     QTextEdit *textEdit{ ui->textEditHtml };
     QTextCursor cursor{ textEdit->textCursor() };
     if (cursor.hasSelection())
@@ -101,6 +102,7 @@ void PrintShowDialog::on_spinBox_fontSize_valueChanged(int arg1)
         textEdit->setFontPointSize(arg1);
     }
     textEdit->setFocus();
+    */
 }
 
 void PrintShowDialog::on_pushButton_fontUnserline_clicked()
@@ -229,3 +231,31 @@ void PrintShowDialog::changeSpinBoxValueWithoutTriggeringSignal(QSpinBox *spinBo
     spinBox->blockSignals(oldState);
 }
 */
+
+void PrintShowDialog::on_textEditHtml_cursorPositionChanged()
+{
+    if (ui->textEditHtml->toPlainText() == "")
+    {
+        ui->textEditHtml->setFontPointSize(ui->spinBox_fontSize->value());
+    }
+}
+
+void PrintShowDialog::on_spinBox_fontSize_editingFinished()
+{
+    int fontSize{ ui->spinBox_fontSize->value() };
+    QTextEdit *textEdit{ ui->textEditHtml };
+    QTextCursor cursor{ textEdit->textCursor() };
+    if (cursor.hasSelection())
+    {
+        // Set selection to new font size
+        QTextCharFormat format;
+        format.setFontPointSize(fontSize);
+        cursor.mergeCharFormat(format);
+    }
+    else
+    {
+        // Make new text to new font size
+        textEdit->setFontPointSize(fontSize);
+    }
+    textEdit->setFocus();
+}
