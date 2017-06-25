@@ -106,11 +106,32 @@ void PrintShowDialog::on_pushButton_fontUnserline_clicked()
 
 void PrintShowDialog::on_pushButton_fontBold_clicked()
 {
+    /*
     bool isBold{ ui->textEditHtml->fontWeight() == QFont::Weight::Bold };
     QTextCursor cursor{ ui->textEditHtml->textCursor() };
     ui->textEditHtml->selectAll();
     ui->textEditHtml->setFontWeight(isBold ? QFont::Weight::Normal : QFont::Weight::Bold);
     ui->textEditHtml->setTextCursor(cursor);
+    */
+    //bool isBold{ ui->textEditHtml->fontWeight() == QFont::Weight::Bold };
+    //QTextCursor cursor{ ui->textEditHtml->textCursor() };
+    //hasSelection()
+    QTextEdit *textEdit{ ui->textEditHtml };
+    QTextCursor cursor{ textEdit->textCursor() };
+    if (cursor.hasSelection())
+    {
+        // Make seelction bold or unbold
+        bool isBold{ cursor.charFormat().fontWeight() == QFont::Weight::Bold };
+        QTextCharFormat format;
+        format.setFontWeight(isBold ? QFont::Weight::Normal : QFont::Weight::Bold);
+        cursor.mergeCharFormat(format);
+    }
+    else
+    {
+        // Make new text bold / not bold
+        bool isBold{ textEdit->fontWeight() == QFont::Weight::Bold };
+        textEdit->setFontWeight(isBold ? QFont::Weight::Normal : QFont::Weight::Bold);
+    }
 }
 
 void PrintShowDialog::on_pushButton_fontItalic_clicked()
