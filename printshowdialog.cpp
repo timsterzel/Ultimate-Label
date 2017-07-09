@@ -52,7 +52,8 @@ void PrintShowDialog::on_pushButton_print_clicked()
         customHeight = ui->spinBox_customHeight->value();
     }
 
-    if (!PrintManager::print(this, tr("Print Document"), doc, customSize, customWidth, customHeight))
+    int printCnt{ ui->spinBox_printCnt->value() };
+    if (!PrintManager::print(this, tr("Print Document"), doc, customSize, customWidth, customHeight, printCnt))
     {
         QMessageBox::information(this, tr("Error by opening printer"), tr("Cannot print file"));
     }

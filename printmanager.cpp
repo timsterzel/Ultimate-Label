@@ -6,7 +6,7 @@
 #include <QPrintDialog>
 #include <QTextDocument>
 
-bool PrintManager::print(QWidget *parent, QString windowTitle, QTextDocument *document, bool customSize, int customWidth, int customHeight)
+bool PrintManager::print(QWidget *parent, QString windowTitle, QTextDocument *document, bool customSize, int customWidth, int customHeight, int copies)
 {
     QPrinter printer;
     QPrintDialog dialog{ &printer, parent };
@@ -30,7 +30,10 @@ bool PrintManager::print(QWidget *parent, QString windowTitle, QTextDocument *do
     QPainter painter;
     painter.begin(&printer);
     painter.scale(scale, scale);
-    // Print
-    document->drawContents(&painter);
+    // Print. Here we print as much copies, which are specified in "copies" parameter
+    for (int i{ 0 }; i < copies; i++)
+    {
+        document->drawContents(&painter);
+    }
     return true;
 }
