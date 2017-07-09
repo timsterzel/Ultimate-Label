@@ -20,7 +20,8 @@
     </message>
     <message>
         <location filename="aboutdialog.ui" line="46"/>
-        <source>1.0</source>
+        <source>1.1</source>
+        <oldsource>1.0</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -66,12 +67,12 @@
     <message>
         <location filename="mainwindow.ui" line="56"/>
         <source>Print Label</source>
-        <translation type="finished">Label drucken</translation>
+        <translation>Label drucken</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="63"/>
         <source>Print Selection</source>
-        <translation type="finished">CSV drucken</translation>
+        <translation>CSV drucken</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="82"/>
@@ -155,7 +156,7 @@
     <message>
         <location filename="printshowdialog.ui" line="22"/>
         <source>Font Size</source>
-        <translation type="finished">Schriftgröße</translation>
+        <translation>Schriftgröße</translation>
     </message>
     <message>
         <location filename="printshowdialog.ui" line="41"/>
@@ -168,7 +169,7 @@
         <location filename="printshowdialog.ui" line="100"/>
         <source>Custom Size</source>
         <oldsource>Change Size</oldsource>
-        <translation type="finished">Andere Größe</translation>
+        <translation>Andere Größe</translation>
     </message>
     <message>
         <location filename="printshowdialog.ui" line="123"/>
@@ -177,42 +178,47 @@
     </message>
     <message>
         <location filename="printshowdialog.ui" line="137"/>
+        <source>Print Count</source>
+        <translation type="finished">Druck Anzahl</translation>
+    </message>
+    <message>
+        <location filename="printshowdialog.ui" line="168"/>
         <source>Save</source>
         <translation>Speichern</translation>
     </message>
     <message>
-        <location filename="printshowdialog.ui" line="144"/>
+        <location filename="printshowdialog.ui" line="175"/>
         <location filename="printshowdialog.cpp" line="18"/>
         <source>Print</source>
         <translation>Drucken</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="54"/>
+        <location filename="printshowdialog.cpp" line="56"/>
         <source>Print Document</source>
-        <translation type="finished">Dokument drucken</translation>
+        <translation>Dokument drucken</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="56"/>
+        <location filename="printshowdialog.cpp" line="58"/>
         <source>Error by opening printer</source>
         <translation>Fehler beim öffnen des Druckers</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="56"/>
+        <location filename="printshowdialog.cpp" line="58"/>
         <source>Cannot print file</source>
         <translation>Dokument kann nicht gedruckt werden</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="62"/>
+        <location filename="printshowdialog.cpp" line="64"/>
         <source>Save to</source>
         <translation>Speichern unter</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="67"/>
+        <location filename="printshowdialog.cpp" line="69"/>
         <source>Error by saving file</source>
         <translation>Fehler beim speichern des Dokuments</translation>
     </message>
     <message>
-        <location filename="printshowdialog.cpp" line="67"/>
+        <location filename="printshowdialog.cpp" line="69"/>
         <source>Cannot save file</source>
         <translation>Dokument kann nicht gespeichert werden</translation>
     </message>
