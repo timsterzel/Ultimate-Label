@@ -48,3 +48,6 @@ TRANSLATIONS = ultimatelabel_lang_de.ts
 
 RESOURCES = languages.qrc \
     general.qrc
+
+# Used to define App icon under Windows
+RC_FILE = UltimateLabel.rc
