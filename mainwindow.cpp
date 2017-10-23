@@ -174,6 +174,7 @@ void MainWindow::on_pushButton_printSelection_clicked()
         QMessageBox::information(this, "Nope", "Please select a profile for printing");
         return;
     }
+
     QString key{ ui->comboBox_profiles->currentText() };
 
     QString tempText{ m_profiles[key].getTemplateText() };
@@ -192,8 +193,15 @@ void MainWindow::on_pushButton_printSelection_clicked()
 
 void MainWindow::on_pushButton_printLabel_clicked()
 {
+    QString tempText{ "" };
+    // When a profile is selected, use the text template
+    if (ui->comboBox_profiles->currentIndex() != -1)
+    {
+        QString key{ ui->comboBox_profiles->currentText() };
+        tempText = m_profiles[key].getTemplateText();
+    }
     // Open dialog for printing labels
-    PrintShowDialog dialog{ nullptr };
+    PrintShowDialog dialog{ nullptr, tempText };
     dialog.setModal(true);
     dialog.exec();
 }
