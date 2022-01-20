@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setWindowTitle(tr("Ultimate Label"));
+    setWindowTitle(tr("UltimateLabel"));
     setWindowIcon(QIcon(":/logo.png"));
     //ui->tableWidget_data->setRowCount(0);
     //ui->tableWidget_data->setColumnCount(0);
@@ -185,6 +185,16 @@ void MainWindow::on_pushButton_printSelection_clicked()
         // Placeholder has the form $(column)
         tempText.replace("$(" + QString::number(i + 1) + ")", data);
     }
+    // Remove entry when checkbox is checked
+    if (ui->checkBox_removeRow->isChecked()) {
+        QModelIndexList selections = ui->tableWidget_data->selectionModel()->selectedRows();
+        // Remove all selected rows (in practice only one row should be selected at the same time)
+        for (int i{ 0 }; i < selections.count(); i++) {
+            int selected_row =selections.at(i).row();
+            ui->tableWidget_data->removeRow(selected_row);
+        }
+    }
+
     // Show dialog which show the data for printing
     PrintShowDialog dialog{ nullptr, tempText };
     dialog.setModal(true);

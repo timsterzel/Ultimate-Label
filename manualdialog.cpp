@@ -1,5 +1,6 @@
 #include "manualdialog.h"
 #include "ui_manualdialog.h"
+#include <QIcon>
 
 ManualDialog::ManualDialog(QWidget *parent) :
     QDialog(parent),

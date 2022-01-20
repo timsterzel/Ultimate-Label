@@ -35,7 +35,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="aboutdialog.cpp" line="9"/>
+        <location filename="aboutdialog.cpp" line="10"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
@@ -65,65 +65,70 @@
         <translation type="vanished">Drucken</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="56"/>
+        <location filename="mainwindow.ui" line="41"/>
+        <source>Hide entries after print</source>
+        <translation>Einträge nach Drucken ausblenden</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="63"/>
         <source>Print Label</source>
         <translation>Label drucken</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="63"/>
+        <location filename="mainwindow.ui" line="70"/>
         <source>Print Selection</source>
         <translation>CSV drucken</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="82"/>
+        <location filename="mainwindow.ui" line="89"/>
         <source>File</source>
         <translation>Datei</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="89"/>
+        <location filename="mainwindow.ui" line="96"/>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="96"/>
+        <location filename="mainwindow.ui" line="103"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="109"/>
+        <location filename="mainwindow.ui" line="116"/>
         <source>toolBar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="120"/>
+        <location filename="mainwindow.ui" line="127"/>
         <location filename="mainwindow.cpp" line="48"/>
         <location filename="mainwindow.cpp" line="53"/>
         <source>Open</source>
         <translation>Öffnen</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="125"/>
+        <location filename="mainwindow.ui" line="132"/>
         <source>Profiles</source>
         <translation>Profile</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="130"/>
+        <location filename="mainwindow.ui" line="137"/>
         <source>Clear</source>
         <translation>Leeren</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="135"/>
+        <location filename="mainwindow.ui" line="142"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="140"/>
-        <location filename="mainwindow.ui" line="150"/>
+        <location filename="mainwindow.ui" line="147"/>
+        <location filename="mainwindow.ui" line="157"/>
         <source>Manual</source>
         <translation>Handbuch</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="145"/>
+        <location filename="mainwindow.ui" line="152"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
@@ -141,7 +146,7 @@
         <translation type="unfinished">Dialog</translation>
     </message>
     <message>
-        <location filename="manualdialog.cpp" line="9"/>
+        <location filename="manualdialog.cpp" line="10"/>
         <source>Manual</source>
         <translation>Handbuch</translation>
     </message>
@@ -179,7 +184,7 @@
     <message>
         <location filename="printshowdialog.ui" line="137"/>
         <source>Print Count</source>
-        <translation type="finished">Druck Anzahl</translation>
+        <translation>Druck Anzahl</translation>
     </message>
     <message>
         <location filename="printshowdialog.ui" line="168"/>
@@ -310,7 +315,7 @@
         <translation>Größe ändern vorlage(Breite, Höhe)</translation>
     </message>
     <message>
-        <location filename="settingsdialog.cpp" line="11"/>
+        <location filename="settingsdialog.cpp" line="12"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>

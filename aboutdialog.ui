@@ -36,28 +36,60 @@
    <item alignment="Qt::AlignHCenter">
     <widget class="QLabel" name="label_appName">
      <property name="text">
-      <string>Ultimate Label</string>
+      <string>UltimateLabel</string>
      </property>
     </widget>
    </item>
    <item alignment="Qt::AlignHCenter">
     <widget class="QLabel" name="label_version">
      <property name="text">
-      <string>1.1</string>
+      <string>1.2</string>
      </property>
     </widget>
    </item>
    <item alignment="Qt::AlignHCenter">
     <widget class="QLabel" name="label_developer">
      <property name="text">
-      <string>2017 Tim Sterzel</string>
+      <string>2016 - 2022 Tim Sterzel</string>
      </property>
     </widget>
    </item>
-   <item alignment="Qt::AlignHCenter">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Under GNU GENERAL PUBLIC LICENSE  Version 3</string>
+   <item>
+    <widget class="QTextBrowser" name="textBrowser_sourceCodeUrl">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="toolTipDuration">
+      <number>0</number>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
+     </property>
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustIgnored</enum>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This Software is Build with the QT Framework (qt.io) under GNU GENERAL PUBLIC LICENSE  Version 3. Source code of this software is available under:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;https://github.com/TmCrafz/Ultimate-Label&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>

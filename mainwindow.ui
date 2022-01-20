@@ -36,6 +36,19 @@
      </widget>
     </item>
     <item>
+     <widget class="QCheckBox" name="checkBox_removeRow">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>Hide entries after print</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout_buttons">
       <item>
        <spacer name="horizontalSpacer">
@@ -74,7 +87,7 @@
      <x>0</x>
      <y>0</y>
      <width>528</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuDatei">
